@@ -1,0 +1,28 @@
+{
+	"name": "optimizedhtml",
+	"version": "5.0.0",
+	"description": "OptimizedHTML 5 - Start HTML Template",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "WebDesign Master",
+	"license": "ISC",
+	"devDependencies": {
+		"bootstrap": "^4.3.1",
+		"browser-sync": "^2.26.5",
+		"del": "^4.1.1",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^6.1.0",
+		"gulp-clean-css": "^4.2.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-image-resize": "^0.13.0",
+		"gulp-imagemin": "^5.0.3",
+		"gulp-notify": "^3.2.0",
+		"gulp-rename": "^1.4.0",
+		"gulp-rsync": "0.0.8",
+		"gulp-sass": "^4.0.2",
+		"gulp-uglify-es": "^1.0.4",
+		"jquery": "^3.4.1"
+	}
+}
