@@ -1,7 +1,8 @@
-<h1><strong>OptimizedHTML 5:</strong> <br>Lightweight startup HTML5 template, based on Gulp & Bootstrap.</h1>
+<h1>OptimizedHTML 5</h1>
+<p>Lightweight startup HTML5 template, based on Gulp & Bootstrap.</p>
 
 <p>
-	<img src="" alt="Start HTML Template">
+	<img src="https://raw.githubusercontent.com/agragregra/oh5/master/app/img/_src/preview.jpg" alt="Start HTML Template">
 </p>
 
 <p>Author: <a href="http://webdesign-master.ru" target="_blank">WebDesign Master</a></p>
