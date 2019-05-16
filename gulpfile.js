@@ -1,5 +1,3 @@
-var syntax         = 'sass'; // Syntax: sass or scss;
-
 var gulp          = require('gulp'),
 		sass          = require('gulp-sass'),
 		browserSync   = require('browser-sync'),
@@ -28,7 +26,7 @@ gulp.task('browser-sync', function() {
 
 // Sass|Scss Styles
 gulp.task('styles', function() {
-	return gulp.src('app/'+syntax+'/**/*.'+syntax+'')
+	return gulp.src('app/sass/**/*.sass')
 	.pipe(sass({ outputStyle: 'expanded' }).on("error", notify.onError()))
 	.pipe(rename({ suffix: '.min', prefix : '' }))
 	.pipe(autoprefixer(['last 15 versions']))
@@ -93,7 +91,7 @@ gulp.task('cleanimg', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
+	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('scripts'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
