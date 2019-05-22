@@ -83,7 +83,7 @@ gulp.task('img2x', function() {
 	.pipe(gulp.dest('app/img/@2x/'))
 });
 
-gulp.task('img', gulp.parallel('img1x', 'img2x'));
+gulp.task('img', gulp.series('img1x', 'img2x'));
 
 // Clean @*x IMG's
 gulp.task('cleanimg', function() {
