@@ -18,6 +18,7 @@
 		"gulp-concat": "^2.6.1",
 		"gulp-image-resize": "^0.13.0",
 		"gulp-imagemin": "^5.0.3",
+		"gulp-newer": "^1.4.0",
 		"gulp-notify": "^3.2.0",
 		"gulp-rename": "^1.4.0",
 		"gulp-rsync": "0.0.8",

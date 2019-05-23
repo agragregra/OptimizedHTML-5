@@ -10,6 +10,7 @@ var gulp          = require('gulp'),
 		rsync         = require('gulp-rsync'),
 		imageResize   = require('gulp-image-resize'),
 		imagemin      = require('gulp-imagemin'),
+		newer         = require('gulp-newer'),
 		del           = require('del');
 
 // Local Server
@@ -72,12 +73,14 @@ gulp.task('rsync', function() {
 // Images @x1 & @x2 + Compression | Required graphicsmagick (sudo apt update; sudo apt install graphicsmagick)
 gulp.task('img1x', function() {
 	return gulp.src('app/img/_src/**/*.*')
+	.pipe(newer('app/img/@1x'))
 	.pipe(imageResize({ width: '50%' }))
 	.pipe(imagemin())
 	.pipe(gulp.dest('app/img/@1x/'))
 });
 gulp.task('img2x', function() {
 	return gulp.src('app/img/_src/**/*.*')
+	.pipe(newer('app/img/@2x'))
 	.pipe(imageResize({ width: '100%' }))
 	.pipe(imagemin())
 	.pipe(gulp.dest('app/img/@2x/'))
