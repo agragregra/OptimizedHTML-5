@@ -24,6 +24,7 @@
 		"gulp-rsync": "0.0.8",
 		"gulp-sass": "^4.0.2",
 		"gulp-uglify-es": "^1.0.4",
+		"imagemin-mozjpeg": "^8.0.0",
 		"jquery": "^3.4.1"
 	}
 }

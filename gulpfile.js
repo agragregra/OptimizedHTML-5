@@ -10,6 +10,7 @@ var gulp          = require('gulp'),
 		rsync         = require('gulp-rsync'),
 		imageResize   = require('gulp-image-resize'),
 		imagemin      = require('gulp-imagemin'),
+		mozjpeg       = require('imagemin-mozjpeg'),
 		newer         = require('gulp-newer'),
 		del           = require('del');
 
@@ -70,22 +71,26 @@ gulp.task('rsync', function() {
 	}))
 });
 
-// Images @x1 & @x2 + Compression | Required graphicsmagick (sudo apt update; sudo apt install graphicsmagick)
+// Images @x1 & @x2 + Compression | Required imagemagick (sudo apt update; sudo apt install imagemagick)
 gulp.task('img1x', function() {
 	return gulp.src('app/img/_src/**/*.*')
 	.pipe(newer('app/img/@1x'))
-	.pipe(imageResize({ width: '50%' }))
-	.pipe(imagemin())
-	.pipe(gulp.dest('app/img/@1x/'))
+	.pipe(imageResize({ width: '50%', imageMagick: true }))
+	.pipe(imagemin([
+		imagemin.jpegtran({ progressive: true }),
+		mozjpeg({ quality: 90 })
+	]))
+	.pipe(gulp.dest('app/img/@1x'))
 });
 gulp.task('img2x', function() {
 	return gulp.src('app/img/_src/**/*.*')
 	.pipe(newer('app/img/@2x'))
-	.pipe(imageResize({ width: '100%' }))
-	.pipe(imagemin())
-	.pipe(gulp.dest('app/img/@2x/'))
+	.pipe(imagemin([
+		imagemin.jpegtran({ progressive: true }),
+		mozjpeg({ quality: 90 })
+	]))
+	.pipe(gulp.dest('app/img/@2x'))
 });
-
 gulp.task('img', gulp.series('img1x', 'img2x'));
 
 // Clean @*x IMG's
