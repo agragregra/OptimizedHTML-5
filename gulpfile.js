@@ -5,7 +5,6 @@ var gulp          = require('gulp'),
 		uglify        = require('gulp-uglify-es').default,
 		cleancss      = require('gulp-clean-css'),
 		autoprefixer  = require('gulp-autoprefixer'),
-		notify        = require('gulp-notify'),
 		rsync         = require('gulp-rsync'),
 		imageResize   = require('gulp-image-resize'),
 		imagemin      = require('gulp-imagemin'),
@@ -25,13 +24,13 @@ gulp.task('browser-sync', function() {
 	})
 });
 
-// Sass|Scss Styles
+// Styles & CSS Libraries
 gulp.task('styles', function() {
 	return gulp.src([
 		'node_modules/normalize.css/normalize.css',
 		'app/sass/**/*.sass'
 	])
-	.pipe(sass({ outputStyle: 'expanded' }).on("error", notify.onError()))
+	.pipe(sass({ outputStyle: 'expanded' }))
 	.pipe(concat("styles.min.css"))
 	.pipe(autoprefixer({
 		browsers: ['last 10 versions'],
@@ -62,7 +61,7 @@ gulp.task('scripts', function() {
 
 // HTML Live Reload
 gulp.task('code', function() {
-	return gulp.src('app/*.html')
+	return gulp.src('app/**/*.html')
 	.pipe(browserSync.reload({ stream: true }))
 });
 
