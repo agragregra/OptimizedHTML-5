@@ -1,7 +1,6 @@
 /node_modules/
 /dist/
 /.git/
-/app/css/
 /**/_backstage
 /**/Thumbs.db
 /**/*.DS_Store
