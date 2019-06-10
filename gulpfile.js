@@ -37,6 +37,7 @@ gulp.task('styles', function() {
 	.pipe(sass({ outputStyle: 'expanded' }))
 	.pipe(concat("styles.min.css"))
 	.pipe(autoprefixer({
+		grid: true,
 		overrideBrowserslist: ['last 10 versions'],
 		cascade: false
 	}))
