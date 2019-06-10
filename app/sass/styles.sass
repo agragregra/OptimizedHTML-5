@@ -56,7 +56,9 @@ body
 	> div:last-child
 		grid-area: right
 	@media (max-width: $xs)
-		grid-template-columns: 1fr
+		display: block
+		> div
+			padding: $gutter/2 0
 	
 .example-img
 	width: 100%
