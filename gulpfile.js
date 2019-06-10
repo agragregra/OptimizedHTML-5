@@ -46,7 +46,7 @@ gulp.task('styles', function() {
 	.pipe(browserSync.stream())
 });
 
-// JS
+// Scripts & JS Libraries
 gulp.task('scripts', function() {
 	return gulp.src([
 		// 'node_modules/jquery/dist/jquery.min.js', // Optional jQuery
