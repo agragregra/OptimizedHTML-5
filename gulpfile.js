@@ -4,7 +4,6 @@ var gulp          = require('gulp'),
 		concat        = require('gulp-concat'),
 		uglify        = require('gulp-uglify-es').default,
 		cleancss      = require('gulp-clean-css'),
-		rename        = require('gulp-rename'),
 		autoprefixer  = require('gulp-autoprefixer'),
 		notify        = require('gulp-notify'),
 		rsync         = require('gulp-rsync'),
@@ -28,20 +27,32 @@ gulp.task('browser-sync', function() {
 
 // Sass|Scss Styles
 gulp.task('styles', function() {
-	return gulp.src('app/sass/**/*.sass')
+	return gulp.src([
+		'node_modules/normalize.css/normalize.css',
+		'app/sass/**/*.sass'
+	])
 	.pipe(sass({ outputStyle: 'expanded' }).on("error", notify.onError()))
-	.pipe(rename({ suffix: '.min', prefix : '' }))
-	.pipe(autoprefixer(['last 15 versions']))
+	.pipe(concat("styles.min.css"))
+	.pipe(autoprefixer({
+		browsers: ['last 10 versions'],
+		cascade: false
+	}))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.stream())
 });
 
+function bsReload(done) {
+	browserSync.reload();
+	done();
+};
+
 // JS
 gulp.task('scripts', function() {
 	return gulp.src([
-		'node_modules/jquery/dist/jquery.min.js',
-		'app/js/common.js', // Always at the end
+		// 'node_modules/jquery/dist/jquery.min.js', // Optional jQuery
+		'app/js/_lazy.js', // JS library example
+		'app/js/_custom.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Mifify js (opt.)
@@ -62,8 +73,8 @@ gulp.task('rsync', function() {
 		root: 'app/',
 		hostname: 'username@yousite.com',
 		destination: 'yousite/public_html/',
-		// include: ['*.htaccess'], // Includes files to deploy
-		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
+		// include: ['*.htaccess'], // Included files
+		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excluded files
 		recursive: true,
 		archive: true,
 		silent: false,
@@ -90,8 +101,9 @@ gulp.task('img2x', function() {
 		mozjpeg({ quality: 90 })
 	]))
 	.pipe(gulp.dest('app/img/@2x'))
+	.pipe(browserSync.reload({ stream: true }))
 });
-gulp.task('img', gulp.series('img1x', 'img2x'));
+gulp.task('img', gulp.series('img1x', 'img2x', bsReload));
 
 // Clean @*x IMG's
 gulp.task('cleanimg', function() {

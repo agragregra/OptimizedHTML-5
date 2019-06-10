@@ -9,7 +9,6 @@
 	"author": "WebDesign Master",
 	"license": "ISC",
 	"devDependencies": {
-		"bootstrap": "^4.3.1",
 		"browser-sync": "^2.26.5",
 		"del": "^4.1.1",
 		"gulp": "^4.0.2",
@@ -25,6 +24,7 @@
 		"gulp-sass": "^4.0.2",
 		"gulp-uglify-es": "^1.0.4",
 		"imagemin-mozjpeg": "^8.0.0",
-		"jquery": "^3.4.1"
+		"jquery": "^3.4.1",
+		"normalize.css": "^8.0.1"
 	}
 }

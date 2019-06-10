@@ -1,0 +1,53 @@
+@import "vars"
+@import "fonts"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+input, textarea
+	border: #666 1px solid
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: "Roboto", sans-serif
+	overflow-x: hidden
+	color: $text
+
+.container
+	max-width: 700px
+	padding:
+		right: $gutter/2
+		left: $gutter/2
+	margin:
+		left: auto
+		right: auto
+
+.grid
+	display: grid
+	grid-gap: $gutter
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+
+// Custom Sass
+.example-grid
+	grid-template-columns: 1fr 1fr
+	@media (max-width: $xs)
+		grid-template-columns: 1fr
