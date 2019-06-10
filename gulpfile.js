@@ -33,7 +33,7 @@ gulp.task('styles', function() {
 	.pipe(sass({ outputStyle: 'expanded' }))
 	.pipe(concat("styles.min.css"))
 	.pipe(autoprefixer({
-		browsers: ['last 10 versions'],
+		overrideBrowserslist: ['last 10 versions'],
 		cascade: false
 	}))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
@@ -106,7 +106,7 @@ gulp.task('img', gulp.series('img1x', 'img2x', bsReload));
 
 // Clean @*x IMG's
 gulp.task('cleanimg', function() {
-	return del(['app/img/@*'], { force:true })
+	return del(['app/img/@*'], { force: true })
 });
 
 gulp.task('watch', function() {
