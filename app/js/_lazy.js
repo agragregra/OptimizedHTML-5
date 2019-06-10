@@ -3,6 +3,8 @@
 // Using example: <img class="lazy" src="thumb.gif" data-src="real-img.jpg" data-srcset="real-img@1x.jpg 1x, real-img@2x.jpg 2x">
 // Background usign example: <div class="lazy-background"> with added class ".visible" for styling
 
+// delete window.IntersectionObserver; // Fallback Testing
+
 document.addEventListener("DOMContentLoaded", function() {
 
 	var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
@@ -41,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		lazyImages.forEach(function(lazyImage) {
 			lazyImage.src = lazyImage.dataset.src;
 			lazyImage.srcset = lazyImage.dataset.srcset;
-			lazyImage.classList.remove("lazy");
 		});
 		lazyBackgrounds.forEach(function(lazyBackground) {
 			lazyBackground.classList.add("visible");
