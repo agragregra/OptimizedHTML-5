@@ -10,6 +10,7 @@ var gulp          = require('gulp'),
 		imagemin      = require('gulp-imagemin'),
 		mozjpeg       = require('imagemin-mozjpeg'),
 		newer         = require('gulp-newer'),
+		rename        = require("gulp-rename"),
 		del           = require('del');
 
 // Local Server
@@ -81,26 +82,27 @@ gulp.task('rsync', function() {
 	}))
 });
 
-// Images @x1 & @x2 + Compression | Required imagemagick (sudo apt update; sudo apt install imagemagick)
+// Images @1x & @2x + Compression | Required imagemagick (sudo apt update; sudo apt install imagemagick)
 gulp.task('img1x', function() {
 	return gulp.src('app/img/_src/**/*.*')
-	.pipe(newer('app/img/@1x'))
+	.pipe(newer('app/img'))
 	.pipe(imageResize({ width: '50%', imageMagick: true }))
 	.pipe(imagemin([
 		imagemin.jpegtran({ progressive: true }),
 		mozjpeg({ quality: 90 })
 	]))
-	.pipe(gulp.dest('app/img/@1x'))
+	.pipe(rename({ suffix: '@1x' }))
+	.pipe(gulp.dest('app/img'))
 });
 gulp.task('img2x', function() {
 	return gulp.src('app/img/_src/**/*.*')
-	.pipe(newer('app/img/@2x'))
+	.pipe(newer('app/img'))
 	.pipe(imagemin([
 		imagemin.jpegtran({ progressive: true }),
 		mozjpeg({ quality: 90 })
 	]))
-	.pipe(gulp.dest('app/img/@2x'))
-	.pipe(browserSync.reload({ stream: true }))
+	.pipe(rename({ suffix: '@2x' }))
+	.pipe(gulp.dest('app/img'))
 });
 gulp.task('img', gulp.series('img1x', 'img2x', bsReload));
 
