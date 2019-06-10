@@ -23,6 +23,10 @@ gulp.task('browser-sync', function() {
 		// tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
 	})
 });
+function bsReload(done) {
+	browserSync.reload();
+	done();
+};
 
 // Styles & CSS Libraries
 gulp.task('styles', function() {
@@ -40,11 +44,6 @@ gulp.task('styles', function() {
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.stream())
 });
-
-function bsReload(done) {
-	browserSync.reload();
-	done();
-};
 
 // JS
 gulp.task('scripts', function() {
