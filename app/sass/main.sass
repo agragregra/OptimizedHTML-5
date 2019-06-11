@@ -50,7 +50,7 @@ body
 		grid-area: left
 	> div:last-child
 		grid-area: right
-	@media (max-width: $xs)
+	+media-breakpoint-down(xs)
 		display: block
 		> div
 			padding: $gutter/2 0
