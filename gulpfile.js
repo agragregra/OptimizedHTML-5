@@ -39,8 +39,7 @@ gulp.task('styles', function() {
 	.pipe(concat("styles.min.css"))
 	.pipe(autoprefixer({
 		grid: true,
-		overrideBrowserslist: ['last 10 versions'],
-		cascade: false
+		overrideBrowserslist: ['last 10 versions']
 	}))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
 	.pipe(gulp.dest('app/css'))
