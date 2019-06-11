@@ -1,5 +1,6 @@
-@import fonts
 @import vars
+@import fonts
+@import libs
 
 ::placeholder
 	color: #666
@@ -24,6 +25,8 @@ body
 	overflow-x: hidden
 	color: $text
 
+// Custom Sass
+
 .container
 	max-width: 700px
 	padding:
@@ -33,21 +36,14 @@ body
 		left: auto
 		right: auto
 
-.grid
-	display: grid
-	grid-gap: $gutter
-	grid-template-areas: "" // Default for IE prefixes
-	grid-template-columns: 1fr // Default for IE prefixes
-
 .img-responsive
 	display: block
 	max-width: 100%
 	height: auto
 
-
-// Custom Sass
-
 .example-grid
+	display: grid
+	grid-gap: $gutter
 	grid-template-columns: 1fr 1fr
 	grid-template-areas: "left right"
 	> div:first-child
