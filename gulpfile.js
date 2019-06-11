@@ -63,9 +63,7 @@ gulp.task('img-responsive', async function() {
 				// Produce @1x images
 				width: '50%', quality: 90, rename: { prefix: '@1x/', }
 			}]
-		})).on('error', function () {
-			console.log('No matching images found');
-		})
+		})).on('error', function () { console.log('No matching images found') })
 		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
 		.pipe(gulp.dest('app/img'))
 		.pipe(browserSync.reload({ stream: true }))
