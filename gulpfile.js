@@ -83,7 +83,7 @@ gulp.task('code', function() {
 
 // Deploy
 gulp.task('rsync', function() {
-	return gulp.src('app/**')
+	return gulp.src('app/')
 	.pipe(rsync({
 		root: 'app/',
 		hostname: 'username@yousite.com',
