@@ -6,13 +6,13 @@
 
 // delete window.IntersectionObserver; // Fallback Testing
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
 
-	var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
-	var lazyBackgrounds = [].slice.call(document.querySelectorAll(".lazy-background"));
-	var lazyBackgroundsData = [].slice.call(document.querySelectorAll("[data-bg]"));
+	var lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
+	var lazyBackgrounds = [].slice.call(document.querySelectorAll('.lazy-background'));
+	var lazyBackgroundsData = [].slice.call(document.querySelectorAll('[data-bg]'));
 
-	if ("IntersectionObserver" in window) {
+	if ('IntersectionObserver' in window) {
 
 		let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
 			entries.forEach(function(entry) {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					let lazyImage = entry.target;
 					lazyImage.src = lazyImage.dataset.src;
 					lazyImage.srcset = lazyImage.dataset.srcset;
-					lazyImage.classList.remove("lazy");
+					lazyImage.classList.remove('lazy');
 					lazyImageObserver.unobserve(lazyImage);
 				}
 			});
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	let lazyBackgroundObserver = new IntersectionObserver(function(entries, observer) {
 		entries.forEach(function(entry) {
 			if (entry.isIntersecting) {
-				entry.target.classList.add("visible");
+				entry.target.classList.add('visible');
 				lazyBackgroundObserver.unobserve(entry.target);
 			}
 		});
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			lazyImage.srcset = lazyImage.dataset.srcset;
 		});
 		lazyBackgrounds.forEach(function(lazyBackground) {
-			lazyBackground.classList.add("visible");
+			lazyBackground.classList.add('visible');
 		});
 		lazyBackgroundsData.forEach(function(lazyBackgroundData) {
 			lazyBackgroundData.style.backgroundImage = 'url(' + lazyBackgroundData.dataset.bg + ')';
