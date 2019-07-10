@@ -1,7 +1,8 @@
 // Lazy loading img & background images using intersection observer
 // Source: https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/
 // Using example: <img class="lazy" src="thumb.gif" data-src="real-img.jpg" data-srcset="real-img@1x.jpg 1x, real-img@2x.jpg 2x">
-// Background usign example: <div class="lazy-background"> with added class ".visible" for styling
+// Background class usign example: <div class="lazy-background"> with added class ".visible" for styling
+// Background image style attr usign example: <div data-bg="image.jpg">
 
 // delete window.IntersectionObserver; // Fallback Testing
 
@@ -9,8 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
 	var lazyBackgrounds = [].slice.call(document.querySelectorAll(".lazy-background"));
+	var lazyBackgroundsData = [].slice.call(document.querySelectorAll("[data-bg]"));
 
 	if ("IntersectionObserver" in window) {
+
 		let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
 			entries.forEach(function(entry) {
 				if (entry.isIntersecting) {
@@ -38,7 +41,22 @@ document.addEventListener("DOMContentLoaded", function() {
 		lazyBackgroundObserver.observe(lazyBackground);
 	});
 
+	let lazyBackgroundDataObserver = new IntersectionObserver(function(entries, observer) {
+		entries.forEach(function(entry) {
+			if (entry.isIntersecting) {
+				let lazyBackgroundData = entry.target;
+				lazyBackgroundData.style.backgroundImage = 'url(' + lazyBackgroundData.dataset.bg + ')';
+				lazyBackgroundDataObserver.unobserve(lazyBackgroundData);
+			}
+		});
+	});
+	lazyBackgroundsData.forEach(function(lazyBackgroundData) {
+		lazyBackgroundDataObserver.observe(lazyBackgroundData);
+	});
+
 	} else {
+
+		// Fallback
 
 		lazyImages.forEach(function(lazyImage) {
 			lazyImage.src = lazyImage.dataset.src;
@@ -46,6 +64,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 		lazyBackgrounds.forEach(function(lazyBackground) {
 			lazyBackground.classList.add("visible");
+		});
+		lazyBackgroundsData.forEach(function(lazyBackgroundData) {
+			lazyBackgroundData.style.backgroundImage = 'url(' + lazyBackgroundData.dataset.bg + ')';
 		});
 
 	}
