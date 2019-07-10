@@ -7,7 +7,7 @@ var gulp         = require('gulp'),
 		autoprefixer = require('gulp-autoprefixer'),
 		rsync        = require('gulp-rsync'),
 		newer        = require('gulp-newer'),
-		rename       = require("gulp-rename"),
+		rename       = require('gulp-rename'),
 		responsive   = require('gulp-responsive'),
 		del          = require('del');
 
@@ -19,7 +19,7 @@ gulp.task('browser-sync', function() {
 		},
 		notify: false,
 		// online: false, // Work offline without internet connection
-		// tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
+		// tunnel: true, tunnel: 'projectname', // Demonstration page: http://projectname.localtunnel.me
 	})
 });
 function bsReload(done) { browserSync.reload(); done(); };
@@ -28,7 +28,7 @@ function bsReload(done) { browserSync.reload(); done(); };
 gulp.task('styles', function() {
 	return gulp.src('app/sass/**/*.sass')
 	.pipe(sass({ outputStyle: 'expanded' }))
-	.pipe(concat("styles.min.css"))
+	.pipe(concat('styles.min.css'))
 	.pipe(autoprefixer({
 		grid: true,
 		overrideBrowserslist: ['last 10 versions']
