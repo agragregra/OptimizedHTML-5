@@ -35,7 +35,7 @@
 	<li>All Sass <strong>vars</strong> placed in <strong>app/sass/_vars.sass</strong></li>
 	<li>All <strong>fonts</strong> plug in <strong>app/sass/_fonts.sass</strong></li>
 	<li>All CSS styles of <strong>libraries</strong> plug in <strong>app/sass/_libs.sass</strong></li>
-	<li>All responsive <strong>images</strong> placed in <strong>app/img/_src/</strong> folder. All source images should initially have a 2x resolution.</li>
+	<li>All responsive <strong>images</strong> placed in <strong>app/img/_src/</strong> folder. All source images should initially have a 2x resolution. Result image folders after resize and compression: <strong>img/@1x/</strong> & <strong>img/@2x/</strong>.</li>
 </ol>
 
 <h2>Included features</h2>
