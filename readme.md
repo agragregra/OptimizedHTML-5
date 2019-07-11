@@ -30,10 +30,10 @@
 <h2>Basic rules</h2>
 
 <ol>
-	<li>All custom <strong title="scripts task">scripts</strong> located in <strong>app/js/_custom.js</strong></li>
-	<li>All custom <strong title="styles task">styles</strong> located in <strong>app/sass/main.sass</strong></li>
+	<li>All custom <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/js/_custom.js</strong></li>
+	<li>All custom <strong title="styles task"><em>styles</em></strong> located in <strong>app/sass/main.sass</strong></li>
 	<li>All Sass vars placed in <strong>app/sass/_vars.sass</strong></li>
-	<li>All Bootstrap fonts plug in <strong>app/sass/_fonts.sass</strong></li>
+	<li>All fonts plug in <strong>app/sass/_fonts.sass</strong></li>
 	<li>All CSS styles of libraries placed in <strong>app/sass/_libs.sass</strong></li>
 	<li>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for server-side resources caching</li>
 </ol>
