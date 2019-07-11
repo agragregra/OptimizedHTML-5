@@ -35,6 +35,9 @@
 	<li>All Sass <strong>vars</strong> placed in <strong>app/sass/_vars.sass</strong></li>
 	<li>All <strong>fonts</strong> plug in <strong>app/sass/_fonts.sass</strong></li>
 	<li>All CSS styles of <strong>libraries</strong> placed in <strong>app/sass/_libs.sass</strong></li>
-	<li>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for server-side resources caching</li>
+	<li>All responsive <strong>images</strong> placed in <strong>app/img/_src/</strong> folder</li>
 </ol>
 
+<h4>Caching</h4>
+
+<p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for server-side resources caching.</p>
