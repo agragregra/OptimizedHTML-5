@@ -7,7 +7,7 @@
 
 <p>Author: <a href="https://webdesign-master.ru" target="_blank">WebDesign Master</a></p>
 
-<p><strong>OptimizedHTML 5</strong> - lightweight start HTML5 template with <strong>Gulp 4</strong>, <strong>Sass</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>Clean-CSS</strong>, <strong>Uglify-ES</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot) support and uses best practices for optimizing responsive images. OptimizedHTML 5 contains a <strong>.htaccess</strong> file with caching rules for web servers.</p>
+<p><strong>OptimizedHTML 5</strong> - lightweight startup HTML5 template with <strong>Gulp 4</strong>, <strong>Sass</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>Clean-CSS</strong>, <strong>Uglify-ES</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot) support and uses best practices for optimizing responsive images. OptimizedHTML 5 contains a <strong>.htaccess</strong> file with caching rules for web servers.</p>
 
 <h2>How to use OptimizedHTML 5</h2>
 
