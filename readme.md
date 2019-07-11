@@ -49,7 +49,16 @@
 
 <h2>Lazy loading images</h2>
 
+<p>Lazy loading img & background images using intersection observer. Enabled by default.</p>
 
+<p>Reference: <a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/">Google Developers</a>.</p>
+
+<p>An example of the usual img tag:</p>
+<pre><img class="lazy" src="thumb.gif" data-src="real.jpg" data-srcset="img/@1x/real.jpg 1x, img/@2x/real.jpg 2x"></pre>
+
+<p>Background class usign example: <code><div class="lazy-background"></code> with added class ".visible" for styling.</p>
+
+<p>Background image style attribute lazy loading example: <code><div data-bg="image.jpg"></code></p>
 
 <h2>Caching</h2>
 
