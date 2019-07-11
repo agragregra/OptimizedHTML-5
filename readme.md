@@ -53,7 +53,7 @@
 
 <p>Reference: <a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/#using_intersection_observer">Google Developers</a>.</p>
 
-<p>1. An example of the <strong>usual &lt;img&gt; tag</strong>:</p>
+<p>1. Example of the <strong>usual &lt;img&gt; tag</strong>:</p>
 <pre>&lt;img class="lazy" src="thumb.gif" data-src="img/@1x/real.jpg" data-srcset="img/@1x/real.jpg 1x, img/@2x/real.jpg 2x"&gt;</pre>
 
 <p>2. <strong>Background image class</strong> changer example: <code>&lt;div class="lazy-background"&gt;</code> with added class ".visible" for styling.</p>
