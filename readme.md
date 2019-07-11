@@ -7,7 +7,7 @@
 
 <p>Author: <a href="https://webdesign-master.ru" target="_blank">WebDesign Master</a></p>
 
-<p><strong>OptimizedHTML 5</strong> - lightweight startup HTML5 template with <strong>Gulp 4</strong>, <strong>Sass</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>Uglify-ES</strong>, <strong>Clean-CSS</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot), uses best practices for optimizing <strong>responsive images</strong> and contains a <strong>.htaccess</strong> file for server-side resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
+<p><strong>OptimizedHTML 5</strong> - lightweight startup HTML5 template with <strong>Gulp 4</strong>, <strong>Sass</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>Uglify-ES</strong>, <strong>Clean-CSS</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot), uses best practices for optimizing <strong>responsive images</strong> and contains a <strong>.htaccess</strong> file for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
 
 <h2>How to use OptimizedHTML 5</h2>
 
@@ -62,7 +62,7 @@
 
 <h2>Caching</h2>
 
-<p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for server-side resources caching.</p>
+<p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for htaccess resources caching.</p>
 
 <h2>Used Gulp Modules (npmjs.com)</h2>
 
