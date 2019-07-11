@@ -22,9 +22,9 @@
 <h2>Main Gulp tasks:</h2>
 
 <ul>
-	<li><strong>gulp</strong>: run default gulp task ('img', 'styles', 'scripts', 'browser-sync', 'watch')</li>
-	<li><strong>cleanimg</strong>: Clean @*x responsive IMG's</li>
-	<li><strong>rsync</strong>: project deployment via <strong>RSYNC</strong></li>
+	<li><strong><em>gulp</em></strong>: run default gulp task ('img', 'styles', 'scripts', 'browser-sync', 'watch')</li>
+	<li><strong><em>cleanimg</em></strong>: Clean @*x responsive IMG's</li>
+	<li><strong><em>rsync</em></strong>: project deployment via <strong>RSYNC</strong></li>
 </ul>
 
 <h2>Basic rules</h2>
