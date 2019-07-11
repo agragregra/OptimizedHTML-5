@@ -38,6 +38,19 @@
 	<li>All responsive <strong>images</strong> placed in <strong>app/img/_src/</strong> folder. All source images should initially have a 2x resolution.</li>
 </ol>
 
+<h2>Included features</h2>
+
+<ol>
+	<li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">bootstrap-reboot.scss</a> - Bootstrap Reboot CSS collection</li>
+	<li>
+		<a href="https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints">_breakpoints.scss</a> - Bootstrap Breakpoints mixin</li>
+	<li>Lazy loading images using Intersection Observer</li>
+</ol>
+
+<h2>Lazy loading images</h2>
+
+
+
 <h2>Caching</h2>
 
 <p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for server-side resources caching.</p>
