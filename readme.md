@@ -58,7 +58,7 @@
 
 <p>2. <strong>Background image class</strong> changer example: <code>&lt;div class="lazy-background"&gt;</code> with added class ".visible" for styling.</p>
 
-<p>3. <strong>Background image style</strong> attribute lazy loading example: <code>&lt;div data-bg="image.jpg"&gt;</code></p>
+<p>3. <strong>Background image style</strong> attribute lazy loading example: <code>&lt;div data-bg="image.jpg"&gt;</code>.</p>
 
 <h2>Caching</h2>
 
