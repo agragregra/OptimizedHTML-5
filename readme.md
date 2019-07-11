@@ -67,6 +67,7 @@
 <h2>Used Gulp Modules (npmjs.com)</h2>
 
 <a href="https://www.npmjs.com/package/browser-sync">browser-sync</a><br>
+<a href="https://www.npmjs.com/package/bootstrap">bootstrap (partial)</a><br>
 <a href="https://www.npmjs.com/package/gulp-autoprefixer">gulp-autoprefixer</a><br>
 <a href="https://www.npmjs.com/package/gulp-clean-css">gulp-clean-css</a><br>
 <a href="https://www.npmjs.com/package/gulp-concat">gulp-concat</a><br>
