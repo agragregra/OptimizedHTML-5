@@ -64,7 +64,7 @@
 
 <p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for htaccess resources caching.</p>
 
-<h2>Used Gulp Modules (npmjs.com pages)</h2>
+<h2>Current Gulp Modules (npmjs.com pages)</h2>
 
 <a href="https://www.npmjs.com/package/browser-sync">browser-sync</a><br>
 <a href="https://www.npmjs.com/package/bootstrap">bootstrap (partial)</a><br>
