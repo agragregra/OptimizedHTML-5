@@ -54,11 +54,11 @@
 <p>Reference: <a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/">Google Developers</a>.</p>
 
 <p>An example of the usual img tag:</p>
-<pre><img class="lazy" src="thumb.gif" data-src="real.jpg" data-srcset="img/@1x/real.jpg 1x, img/@2x/real.jpg 2x"></pre>
+<pre>&lt;img class="lazy" src="thumb.gif" data-src="real.jpg" data-srcset="img/@1x/real.jpg 1x, img/@2x/real.jpg 2x"&gt;</pre>
 
-<p>Background class usign example: <code><div class="lazy-background"></code> with added class ".visible" for styling.</p>
+<p>Background class usign example: <code>&lt;div class="lazy-background"&gt;</code> with added class ".visible" for styling.</p>
 
-<p>Background image style attribute lazy loading example: <code><div data-bg="image.jpg"></code></p>
+<p>Background image style attribute lazy loading example: <code>&lt;div data-bg="image.jpg"&gt;</code></p>
 
 <h2>Caching</h2>
 
