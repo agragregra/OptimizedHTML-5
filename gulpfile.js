@@ -66,7 +66,6 @@ gulp.task('img-responsive', async function() {
 		})).on('error', function () { console.log('No matching images found') })
 		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
 		.pipe(gulp.dest('app/img'))
-		.pipe(browserSync.reload({ stream: true }))
 });
 gulp.task('img', gulp.series('img-responsive', bsReload));
 

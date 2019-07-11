@@ -38,6 +38,6 @@
 	<li>All responsive <strong>images</strong> placed in <strong>app/img/_src/</strong> folder</li>
 </ol>
 
-<h4>Caching</h4>
+<h2>Caching</h2>
 
 <p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for server-side resources caching.</p>
