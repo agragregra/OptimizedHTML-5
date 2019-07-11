@@ -44,7 +44,7 @@
 	<li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">bootstrap-reboot.scss</a> - Bootstrap Reboot CSS collection</li>
 	<li>
 		<a href="https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints">_breakpoints.scss</a> - Bootstrap Breakpoints mixin</li>
-	<li>Lazy loading images using Intersection Observer</li>
+	<li><a href="https://github.com/agragregra/OptimizedHTML-5/blob/master/app/js/_lazy.js">js/_lazy.js</a>Lazy loading images using Intersection Observer</li>
 </ol>
 
 <h2>Lazy loading images</h2>
