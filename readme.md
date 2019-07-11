@@ -17,7 +17,7 @@
 	<li>Run: <strong>gulp</strong>.</li>
 </ol>
 
-<h2>Gulp tasks:</h2>
+<h2>Main Gulp tasks:</h2>
 
 <ul>
 	<li><strong>gulp</strong>: run default gulp task ('img', 'styles', 'scripts', 'browser-sync', 'watch');</li>
