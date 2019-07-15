@@ -74,7 +74,7 @@ gulp.task('cleanimg', function() {
 	return del(['app/img/@*'], { force: true })
 });
 
-// HTML Live Reload
+// Code & Reload
 gulp.task('code', function() {
 	return gulp.src('app/**/*.html')
 	.pipe(browserSync.reload({ stream: true }))
