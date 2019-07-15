@@ -63,18 +63,3 @@
 <h2>Caching</h2>
 
 <p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for htaccess resources caching.</p>
-
-<h2>Current Gulp Modules (npmjs.com pages)</h2>
-
-<a href="https://www.npmjs.com/package/browser-sync">browser-sync</a><br>
-<a href="https://www.npmjs.com/package/bootstrap">bootstrap (partial)</a><br>
-<a href="https://www.npmjs.com/package/gulp-autoprefixer">gulp-autoprefixer</a><br>
-<a href="https://www.npmjs.com/package/gulp-clean-css">gulp-clean-css</a><br>
-<a href="https://www.npmjs.com/package/gulp-concat">gulp-concat</a><br>
-<a href="https://www.npmjs.com/package/gulp-newer">gulp-newer</a><br>
-<a href="https://www.npmjs.com/package/gulp-rename">gulp-rename</a><br>
-<a href="https://www.npmjs.com/package/gulp-responsive">gulp-responsive</a><br>
-<a href="https://www.npmjs.com/package/gulp-rsync">gulp-rsync</a><br>
-<a href="https://www.npmjs.com/package/gulp-sass">gulp-sass</a><br>
-<a href="https://www.npmjs.com/package/gulp-uglify-es">gulp-uglify-es</a><br>
-<a href="https://www.npmjs.com/package/del">del</a><br>
