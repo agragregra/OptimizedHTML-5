@@ -9,7 +9,8 @@ var gulp         = require('gulp'),
 		newer        = require('gulp-newer'),
 		rename       = require('gulp-rename'),
 		responsive   = require('gulp-responsive'),
-		del          = require('del');
+		del          = require('del'),
+		rigger		 = require('gulp-rigger');
 
 // Local Server
 gulp.task('browser-sync', function() {
@@ -37,6 +38,16 @@ gulp.task('styles', function() {
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.stream())
 });
+
+gulp.task('rigger', function () {
+    return gulp.src([
+		'app/html/*.html',
+		'app/html/html_partials/*.html'
+	])
+        .pipe(rigger())
+        .pipe(gulp.dest('./app'))
+        .pipe(browserSync.reload({ stream: true }));
+})
 
 // Scripts & JS Libraries
 gulp.task('scripts', function() {
@@ -74,12 +85,6 @@ gulp.task('cleanimg', function() {
 	return del(['app/img/@*'], { force: true })
 });
 
-// Code & Reload
-gulp.task('code', function() {
-	return gulp.src('app/**/*.html')
-	.pipe(browserSync.reload({ stream: true }))
-});
-
 // Deploy
 gulp.task('rsync', function() {
 	return gulp.src('app/')
@@ -99,8 +104,11 @@ gulp.task('rsync', function() {
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
 	gulp.watch(['libs/**/*.js', 'app/js/_custom.js'], gulp.parallel('scripts'));
-	gulp.watch('app/*.html', gulp.parallel('code'));
+	gulp.watch([
+		'app/html/**/*.html',
+		'app/html_partials/**/*.html'
+	], gulp.parallel('rigger'));
 	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
 });
 
-gulp.task('default', gulp.parallel('img', 'styles', 'scripts', 'browser-sync', 'watch'));
+gulp.task('default', gulp.parallel('img', 'styles', 'scripts', 'browser-sync', 'watch', 'rigger'));
