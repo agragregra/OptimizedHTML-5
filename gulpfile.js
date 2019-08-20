@@ -52,13 +52,14 @@ gulp.task('scripts', function() {
 });
 
 // Responsive Images
+var quality = 95; // Responsive images quality
 
 // Produce @1x images
 gulp.task('img-responsive-1x', async function() {
 	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
 		.pipe(newer('app/img/@1x'))
 		.pipe(responsive({
-			'**/*': { width: '50%', quality: 95 }
+			'**/*': { width: '50%', quality: quality }
 		})).on('error', function (e) { console.log(e) })
 		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
 		.pipe(gulp.dest('app/img/@1x'))
@@ -68,7 +69,7 @@ gulp.task('img-responsive-2x', async function() {
 	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
 		.pipe(newer('app/img/@2x'))
 		.pipe(responsive({
-			'**/*': { width: '100%', quality: 95 }
+			'**/*': { width: '100%', quality: quality }
 		})).on('error', function (e) { console.log(e) })
 		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
 		.pipe(gulp.dest('app/img/@2x'))
