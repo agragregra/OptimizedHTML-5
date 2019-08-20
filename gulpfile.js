@@ -56,7 +56,7 @@ gulp.task('img-responsive', async function() {
 	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
 		.pipe(newer('app/img/@1x'))
 		.pipe(responsive({
-			'*': [{
+			'**/*': [{
 				// Produce @2x images
 				width: '100%', quality: 90, rename: { prefix: '@2x/', },
 			}, {
