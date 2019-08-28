@@ -52,22 +52,29 @@ gulp.task('scripts', function() {
 });
 
 // Responsive Images
-gulp.task('img-responsive', async function() {
+var quality = 95; // Responsive images quality
+
+// Produce @1x images
+gulp.task('img-responsive-1x', async function() {
 	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
 		.pipe(newer('app/img/@1x'))
 		.pipe(responsive({
-			'*': [{
-				// Produce @2x images
-				width: '100%', quality: 90, rename: { prefix: '@2x/', },
-			}, {
-				// Produce @1x images
-				width: '50%', quality: 90, rename: { prefix: '@1x/', }
-			}]
-		})).on('error', function () { console.log('No matching images found') })
+			'**/*': { width: '50%', quality: quality }
+		})).on('error', function (e) { console.log(e) })
 		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
-		.pipe(gulp.dest('app/img'))
+		.pipe(gulp.dest('app/img/@1x'))
 });
-gulp.task('img', gulp.series('img-responsive', bsReload));
+// Produce @2x images
+gulp.task('img-responsive-2x', async function() {
+	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
+		.pipe(newer('app/img/@2x'))
+		.pipe(responsive({
+			'**/*': { width: '100%', quality: quality }
+		})).on('error', function (e) { console.log(e) })
+		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
+		.pipe(gulp.dest('app/img/@2x'))
+});
+gulp.task('img', gulp.series('img-responsive-1x', 'img-responsive-2x', bsReload));
 
 // Clean @*x IMG's
 gulp.task('cleanimg', function() {
