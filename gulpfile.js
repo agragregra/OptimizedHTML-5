@@ -9,6 +9,7 @@ var gulp         = require('gulp'),
 		newer        = require('gulp-newer'),
 		rename       = require('gulp-rename'),
 		responsive   = require('gulp-responsive'),
+		include      = require('gulp-include'),
 		del          = require('del');
 
 // Local Server
@@ -27,7 +28,10 @@ function bsReload(done) { browserSync.reload(); done(); };
 // Custom Styles
 gulp.task('styles', function() {
 	return gulp.src('app/sass/**/*.sass')
-	.pipe(sass({ outputStyle: 'expanded' }))
+	.pipe(sass({
+		outputStyle: 'expanded',
+		includePaths: [__dirname + '/node_modules']
+	}))
 	.pipe(concat('styles.min.css'))
 	.pipe(autoprefixer({
 		grid: true,
@@ -41,10 +45,16 @@ gulp.task('styles', function() {
 // Scripts & JS Libraries
 gulp.task('scripts', function() {
 	return gulp.src([
-		// 'node_modules/jquery/dist/jquery.min.js', // Optional jQuery plug-in (npm i --save-dev jquery)
-		'app/js/_lazy.js', // JS library plug-in example
+		'app/js/_libs.js', // JS libraries
 		'app/js/_custom.js', // Custom scripts. Always at the end
 		])
+	.pipe(include({
+		extensions: 'js',
+		includePaths: [
+			__dirname + '/node_modules',
+			__dirname + '/app/js'
+		]
+	}))
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Minify js (opt.)
 	.pipe(gulp.dest('app/js'))
@@ -105,7 +115,7 @@ gulp.task('rsync', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
-	gulp.watch(['libs/**/*.js', 'app/js/_custom.js'], gulp.parallel('scripts'));
+	gulp.watch(['app/js/_custom.js', 'app/js/_libs.js', 'app/js/libs/**/*.js'], gulp.parallel('scripts'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
 });
