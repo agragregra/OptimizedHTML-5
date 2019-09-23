@@ -9,7 +9,6 @@ var gulp         = require('gulp'),
 		newer        = require('gulp-newer'),
 		rename       = require('gulp-rename'),
 		responsive   = require('gulp-responsive'),
-		include      = require('gulp-include'),
 		del          = require('del');
 
 // Local Server
