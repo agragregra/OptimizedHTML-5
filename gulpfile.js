@@ -45,16 +45,10 @@ gulp.task('styles', function() {
 // Scripts & JS Libraries
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/js/_libs.js', // JS libraries
+		// 'node_modules/jquery/dist/jquery.min.js', // Optional jQuery plug-in (npm i --save-dev jquery)
+		'app/js/_libs.js', // JS libraries (all in one)
 		'app/js/_custom.js', // Custom scripts. Always at the end
 		])
-	.pipe(include({
-		extensions: 'js',
-		includePaths: [
-			__dirname + '/node_modules',
-			__dirname + '/app/js'
-		]
-	}))
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Minify js (opt.)
 	.pipe(gulp.dest('app/js'))
@@ -115,7 +109,7 @@ gulp.task('rsync', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
-	gulp.watch(['app/js/_custom.js', 'app/js/_libs.js', 'app/js/libs/**/*.js'], gulp.parallel('scripts'));
+	gulp.watch(['app/js/_custom.js', 'app/js/_libs.js'], gulp.parallel('scripts'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
 });
