@@ -1,6 +1,6 @@
 var gulp         = require('gulp'),
 		sass         = require('gulp-sass'),
-		browserSync  = require('browser-sync'),
+		browserSync  = require('browser-sync').create(),
 		concat       = require('gulp-concat'),
 		uglify       = require('gulp-uglify-es').default,
 		cleancss     = require('gulp-clean-css'),
@@ -13,7 +13,7 @@ var gulp         = require('gulp'),
 
 // Local Server
 gulp.task('browser-sync', function() {
-	browserSync({
+	browserSync.init({
 		server: {
 			baseDir: 'app'
 		},
