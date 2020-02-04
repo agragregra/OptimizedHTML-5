@@ -4,10 +4,10 @@ var gulp         = require('gulp'),
 		concat       = require('gulp-concat'),
 		uglify       = require('gulp-uglify-es').default,
 		cleancss     = require('gulp-clean-css'),
+		rename       = require('gulp-rename'),
 		autoprefixer = require('gulp-autoprefixer'),
 		rsync        = require('gulp-rsync'),
 		newer        = require('gulp-newer'),
-		rename       = require('gulp-rename'),
 		responsive   = require('gulp-responsive'),
 		del          = require('del');
 
