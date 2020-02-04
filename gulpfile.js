@@ -22,7 +22,7 @@ gulp.task('browser-sync', function() {
 		// tunnel: true, tunnel: 'projectname', // Demonstration page: http://projectname.localtunnel.me
 	})
 });
-function bsReload(done) { browserSync.reload(); done(); };
+function bsReload(done) { browserSync.reload(); done() };
 
 // Custom Styles
 gulp.task('styles', function() {
@@ -33,7 +33,7 @@ gulp.task('styles', function() {
 	}))
 	.pipe(concat('styles.min.css'))
 	.pipe(autoprefixer({
-		grid: true,
+		// grid: true, // Optional. Enable CSS Grid
 		overrideBrowserslist: ['last 10 versions']
 	}))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Optional. Comment out when debugging
