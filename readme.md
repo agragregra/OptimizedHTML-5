@@ -52,12 +52,12 @@
 <h3>font-weight helper</h3>
 
 <ul>
-	<li></li><strong>100</strong> - Extra Light or Ultra Light</li>
-	<li></li><strong>200</strong> - Light or Thin; 300 Book or Demi</li>
-	<li></li><strong>400</strong> - Regular or Normal</li>
-	<li></li><strong>500</strong> - Medium</li>
-	<li></li><strong>600</strong> - Semibold or Demibold</li>
-	<li></li><strong>700</strong> - Bold</li>
-	<li></li><strong>800</strong> - Black or Extra Bold or Heavy</li>
-	<li></li><strong>900</strong> - Extra Black or Fat or Ultra Blac</li>
+	<li><strong>100</strong> - Extra Light or Ultra Light</li>
+	<li><strong>200</strong> - Light or Thin; 300 Book or Demi</li>
+	<li><strong>400</strong> - Regular or Normal</li>
+	<li><strong>500</strong> - Medium</li>
+	<li><strong>600</strong> - Semibold or Demibold</li>
+	<li><strong>700</strong> - Bold</li>
+	<li><strong>800</strong> - Black or Extra Bold or Heavy</li>
+	<li><strong>900</strong> - Extra Black or Fat or Ultra Blac</li>
 </ul>
