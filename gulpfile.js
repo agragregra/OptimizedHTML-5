@@ -1,98 +1,71 @@
-var gulp         = require('gulp'),
-		sass         = require('gulp-sass'),
-		browserSync  = require('browser-sync').create(),
-		concat       = require('gulp-concat'),
-		uglify       = require('gulp-uglify-es').default,
-		cleancss     = require('gulp-clean-css'),
-		rename       = require('gulp-rename'),
-		autoprefixer = require('gulp-autoprefixer'),
-		rsync        = require('gulp-rsync'),
-		newer        = require('gulp-newer'),
-		responsive   = require('gulp-responsive'),
-		del          = require('del');
+let preprocessor = 'sass'; // Preprocessor (sass, scss)
+let fileswatch   = 'html,htm,txt,json,md'; // List of files extensions for watching & hard reload (comma separated)
+let imageswatch  = 'jpg,jpeg,png,webp,svg'; // List of files extensions for watching & hard reload (comma separated)
+
+const { src, dest, parallel, series, watch } = require('gulp');
+const sass           = require('gulp-sass');
+const cleancss       = require('gulp-clean-css');
+const concat         = require('gulp-concat');
+const browserSync    = require('browser-sync').create();
+const uglify         = require('gulp-uglify-es').default;
+const autoprefixer   = require('gulp-autoprefixer');
+const imagemin       = require('gulp-imagemin');
+const newer          = require('gulp-newer');
+const rsync          = require('gulp-rsync');
+const del            = require('del');
 
 // Local Server
-gulp.task('browser-sync', function() {
+
+function browsersync() {
 	browserSync.init({
-		server: {
-			baseDir: 'app'
-		},
+		server: { baseDir: 'app' },
 		notify: false,
 		// online: false, // Work offline without internet connection
-		// tunnel: true, tunnel: 'projectname', // Demonstration page: http://projectname.localtunnel.me
 	})
-});
-function bsReload(done) { browserSync.reload(); done() };
+}
 
 // Custom Styles
-gulp.task('styles', function() {
-	return gulp.src('app/sass/**/*.sass')
-	.pipe(sass({
-		outputStyle: 'expanded',
-		includePaths: [__dirname + '/node_modules']
-	}))
-	.pipe(concat('styles.min.css'))
-	.pipe(autoprefixer({
-		// grid: true, // Optional. Enable CSS Grid
-		overrideBrowserslist: ['last 10 versions']
-	}))
-	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Optional. Comment out when debugging
-	.pipe(gulp.dest('app/css'))
+
+function styles() {
+	return src('app/sass/main.' + preprocessor + '')
+	.pipe(sass())
+	.pipe(concat('app.min.css'))
+	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+	.pipe(cleancss( {level: { 1: { specialComments: 0 } } }))
+	.pipe(dest('app/css'))
 	.pipe(browserSync.stream())
-});
+}
 
 // Scripts & JS Libraries
-gulp.task('scripts', function() {
-	return gulp.src([
-		// 'node_modules/jquery/dist/jquery.min.js', // Optional jQuery plug-in (npm i --save-dev jquery)
-		'app/js/_libs.js', // JS libraries (all in one)
-		'app/js/_custom.js', // Custom scripts. Always at the end
+
+function scripts() {
+	return src([
+		// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
+		'app/js/app.js' // app.js. Always at the end
 		])
-	.pipe(concat('scripts.min.js'))
-	.pipe(uglify()) // Minify js (opt.)
-	.pipe(gulp.dest('app/js'))
-	.pipe(browserSync.reload({ stream: true }))
-});
+	.pipe(concat('app.min.js'))
+	.pipe(uglify()) // Minify JS (opt.)
+	.pipe(dest('app/js'))
+	.pipe(browserSync.stream())
+}
 
-// Responsive Images
-var quality = 95; // Responsive images quality
+// Images
 
-// Produce @1x images
-gulp.task('img-responsive-1x', async function() {
-	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
-		.pipe(newer('app/img/@1x'))
-		.pipe(responsive({
-			'**/*': { width: '50%', quality: quality }
-		})).on('error', function (e) { console.log(e) })
-		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
-		.pipe(gulp.dest('app/img/@1x'))
-});
-// Produce @2x images
-gulp.task('img-responsive-2x', async function() {
-	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
-		.pipe(newer('app/img/@2x'))
-		.pipe(responsive({
-			'**/*': { width: '100%', quality: quality }
-		})).on('error', function (e) { console.log(e) })
-		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
-		.pipe(gulp.dest('app/img/@2x'))
-});
-gulp.task('img', gulp.series('img-responsive-1x', 'img-responsive-2x', bsReload));
+function images() {
+	return src('app/images/src/**/*')
+	.pipe(newer('app/images/dest'))
+	.pipe(imagemin())
+	.pipe(dest('app/images/dest'))
+}
 
-// Clean @*x IMG's
-gulp.task('cleanimg', function() {
-	return del(['app/img/@*'], { force: true })
-});
-
-// Code & Reload
-gulp.task('code', function() {
-	return gulp.src('app/**/*.html')
-	.pipe(browserSync.reload({ stream: true }))
-});
+function cleanimg() {
+	return del('app/images/dest/**/*', { force: true })
+}
 
 // Deploy
-gulp.task('rsync', function() {
-	return gulp.src('app/')
+
+function deploy() {
+	return src('app/')
 	.pipe(rsync({
 		root: 'app/',
 		hostname: 'username@yousite.com',
@@ -104,13 +77,22 @@ gulp.task('rsync', function() {
 		silent: false,
 		compress: true
 	}))
-});
+}
 
-gulp.task('watch', function() {
-	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
-	gulp.watch(['app/js/_custom.js', 'app/js/_libs.js'], gulp.parallel('scripts'));
-	gulp.watch('app/*.html', gulp.parallel('code'));
-	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
-});
+// Watching
 
-gulp.task('default', gulp.parallel('img', 'styles', 'scripts', 'browser-sync', 'watch'));
+function startwatch() {
+	watch('app/sass/*.' + preprocessor + '', parallel('styles'));
+	watch(['app/**/*.js', '!app/js/*.min.js'], parallel('scripts'));
+	watch(['app/**/*.{' + imageswatch + '}'], parallel('images'));
+	watch(['app/**/*.{' + fileswatch + '}']).on('change', browserSync.reload);
+}
+
+exports.browsersync = browsersync;
+exports.assets      = series(cleanimg, styles, scripts, images);
+exports.styles      = styles;
+exports.scripts     = scripts;
+exports.images      = images;
+exports.cleanimg    = cleanimg;
+exports.deploy      = deploy;
+exports.default     = parallel(styles, scripts, browsersync, startwatch);
