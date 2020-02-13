@@ -95,4 +95,4 @@ exports.scripts     = scripts;
 exports.images      = images;
 exports.cleanimg    = cleanimg;
 exports.deploy      = deploy;
-exports.default     = parallel(styles, scripts, browsersync, startwatch);
+exports.default     = parallel(images,styles, scripts, browsersync, startwatch);
