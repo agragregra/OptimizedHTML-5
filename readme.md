@@ -53,7 +53,8 @@
 
 <ul>
 	<li><strong>100</strong> - Extra Light or Ultra Light</li>
-	<li><strong>200</strong> - Light or Thin; 300 Book or Demi</li>
+	<li><strong>200</strong> - Light or Thin</li>
+	<li><strong>300</strong> - Book or Demi</li>
 	<li><strong>400</strong> - Regular or Normal</li>
 	<li><strong>500</strong> - Medium</li>
 	<li><strong>600</strong> - Semibold or Demibold</li>
