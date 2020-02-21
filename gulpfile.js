@@ -1,6 +1,6 @@
 let preprocessor = 'sass'; // Preprocessor (sass, scss)
-let fileswatch   = 'html,htm,txt,json,md'; // List of files extensions for watching & hard reload (comma separated)
-let imageswatch  = 'jpg,jpeg,png,webp,svg,woff2'; // List of files extensions for watching & hard reload (comma separated)
+let fileswatch   = 'html,htm,txt,json,md,woff2'; // List of files extensions for watching & hard reload (comma separated)
+let imageswatch  = 'jpg,jpeg,png,webp,svg'; // List of images extensions for watching & compression (comma separated)
 
 const { src, dest, parallel, series, watch } = require('gulp');
 const sass           = require('gulp-sass');
