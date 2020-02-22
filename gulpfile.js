@@ -1,9 +1,12 @@
-let preprocessor = 'sass'; // Preprocessor (sass, scss)
+let preprocessor = 'sass'; // Preprocessor (sass, scss, less, styl)
 let fileswatch   = 'html,htm,txt,json,md,woff2'; // List of files extensions for watching & hard reload (comma separated)
 let imageswatch  = 'jpg,jpeg,png,webp,svg'; // List of images extensions for watching & compression (comma separated)
 
 const { src, dest, parallel, series, watch } = require('gulp');
 const sass           = require('gulp-sass');
+const scss           = require('gulp-sass');
+const less           = require('gulp-less');
+const styl           = require('gulp-stylus');
 const cleancss       = require('gulp-clean-css');
 const concat         = require('gulp-concat');
 const browserSync    = require('browser-sync').create();
@@ -27,8 +30,8 @@ function browsersync() {
 // Custom Styles
 
 function styles() {
-	return src('app/sass/main.' + preprocessor + '')
-	.pipe(sass())
+	return src('app/' + preprocessor + '/main.*')
+	.pipe(eval(preprocessor)())
 	.pipe(concat('app.min.css'))
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } }))
@@ -82,7 +85,7 @@ function deploy() {
 // Watching
 
 function startwatch() {
-	watch('app/sass/*.' + preprocessor + '', parallel('styles'));
+	watch('app/' + preprocessor + '/*', parallel('styles'));
 	watch(['app/**/*.js', '!app/js/*.min.js'], parallel('scripts'));
 	watch(['app/**/*.{' + imageswatch + '}'], parallel('images'));
 	watch(['app/**/*.{' + fileswatch + '}']).on('change', browserSync.reload);

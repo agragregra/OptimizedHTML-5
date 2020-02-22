@@ -1,0 +1,54 @@
+// IMPORT SECTION
+
+@import '/node_modules/bootstrap/dist/css/bootstrap-reboot.min.css' // Bootstrap Reboot collection
+// @import '/node_modules/bootstrap/dist/css/bootstrap-grid.min.css' // Optional Bootstrap Grid
+
+// USER VARIABLES SECTION
+
+accent     = orange // Accent Color
+fontsize   = 16px // Body Font Size
+textcolor  = #333 // Text Color
+mainfamily = roboto, sans-serif // Main Font Family
+
+// FONTS LOAD SECTION
+
+font(f-name, f-style, f-weight, f-url)
+	@font-face
+		font-family f-name
+		font-style f-style
+		font-weight f-weight
+		src url(f-url) format('woff2')
+
+
+font('roboto', normal, 400, '../fonts/roboto-regular-webfont.woff2')
+font('roboto', italic, 400, '../fonts/roboto-italic-webfont.woff2')
+font('roboto', normal, 700, '../fonts/roboto-bold-webfont.woff2')
+font('roboto', italic, 700, '../fonts/roboto-bolditalic-webfont.woff2')
+
+
+// GENERAL DOCUMENT STYLES
+
+::placeholder
+	color #666
+
+::selection
+	background-color accent
+	color #fff
+
+input, textarea
+	outline none
+	&:focus:required:invalid
+		border-color red
+	&:required:valid
+		border-color green
+
+body
+	font-size fontsize
+	min-width 320px
+	position relative
+	line-height 1.65
+	font-family mainfamily
+	overflow-x hidden
+	color textcolor
+
+
