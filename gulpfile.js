@@ -3,19 +3,19 @@ let fileswatch   = 'html,htm,txt,json,md,woff2'; // List of files extensions for
 let imageswatch  = 'jpg,jpeg,png,webp,svg'; // List of images extensions for watching & compression (comma separated)
 
 const { src, dest, parallel, series, watch } = require('gulp');
-const sass           = require('gulp-sass');
-const scss           = require('gulp-sass');
-const less           = require('gulp-less');
-const styl           = require('gulp-stylus');
-const cleancss       = require('gulp-clean-css');
-const concat         = require('gulp-concat');
-const browserSync    = require('browser-sync').create();
-const uglify         = require('gulp-uglify-es').default;
-const autoprefixer   = require('gulp-autoprefixer');
-const imagemin       = require('gulp-imagemin');
-const newer          = require('gulp-newer');
-const rsync          = require('gulp-rsync');
-const del            = require('del');
+const sass         = require('gulp-sass');
+const scss         = require('gulp-sass');
+const less         = require('gulp-less');
+const styl         = require('gulp-stylus');
+const cleancss     = require('gulp-clean-css');
+const concat       = require('gulp-concat');
+const browserSync  = require('browser-sync').create();
+const uglify       = require('gulp-uglify-es').default;
+const autoprefixer = require('gulp-autoprefixer');
+const imagemin     = require('gulp-imagemin');
+const newer        = require('gulp-newer');
+const rsync        = require('gulp-rsync');
+const del          = require('del');
 
 // Local Server
 
