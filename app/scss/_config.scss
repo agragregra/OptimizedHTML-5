@@ -11,7 +11,7 @@
 $accent:     orange; // Accent Color
 $fontsize:   16px; // Body Font Size
 $textcolor:  #333; // Text Color
-$mainfamily: roboto, sans-serif; // Main Font Family
+$roboto: Roboto, sans-serif; // Roboto Font Family
 
 // Bootstrap compatible gutter variable => $gutter
 
@@ -21,21 +21,21 @@ $gutter: $grid-gutter-width;
 
 // FONTS LOAD SECTION
 
-@mixin font($f-name, $f-style, $f-weight, $f-url) {
+@mixin font($fname, $fstyle, $fweight, $furl) {
 	@font-face {
-		font-family: $f-name;
-		font-style: $f-style;
-		font-weight: $f-weight;
+		font-family: $fname;
+		font-style: $fstyle;
+		font-weight: $fweight;
 		font-display: swap;
-		src: url($f-url) format('woff2');
+		src: local($fname), url($furl) format('woff2');
 	}
 }
 
 
-@include font('roboto', normal, 400, '../fonts/roboto-regular-webfont.woff2');
-@include font('roboto', italic, 400, '../fonts/roboto-italic-webfont.woff2');
-@include font('roboto', normal, 700, '../fonts/roboto-bold-webfont.woff2');
-@include font('roboto', italic, 700, '../fonts/roboto-bolditalic-webfont.woff2');
+@include font('Roboto', normal, 400, '../fonts/roboto-regular-webfont.woff2');
+@include font('Roboto', italic, 400, '../fonts/roboto-italic-webfont.woff2');
+@include font('Roboto', normal, 700, '../fonts/roboto-bold-webfont.woff2');
+@include font('Roboto', italic, 700, '../fonts/roboto-bolditalic-webfont.woff2');
 
 
 // GENERAL DOCUMENT STYLES
@@ -60,7 +60,6 @@ body {
 	min-width: 320px;
 	position: relative;
 	line-height: 1.65;
-	font-family: $mainfamily;
 	overflow-x: hidden;
 	color: $textcolor;
 }
