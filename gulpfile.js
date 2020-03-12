@@ -2,7 +2,7 @@ let preprocessor = 'sass'; // Preprocessor (sass, scss, less, styl)
 let fileswatch   = 'html,htm,txt,json,md,woff2'; // List of files extensions for watching & hard reload (comma separated)
 let imageswatch  = 'jpg,jpeg,png,webp,svg'; // List of images extensions for watching & compression (comma separated)
 
-const { src, dest, parallel, series, watch } = require('gulp');
+const { src, dest, parallel, series, watch, lastRun } = require('gulp');
 const sass         = require('gulp-sass');
 const scss         = require('gulp-sass');
 const less         = require('gulp-less');
@@ -13,7 +13,6 @@ const browserSync  = require('browser-sync').create();
 const uglify       = require('gulp-uglify-es').default;
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin     = require('gulp-imagemin');
-const newer        = require('gulp-newer');
 const rsync        = require('gulp-rsync');
 const del          = require('del');
 
@@ -55,8 +54,7 @@ function scripts() {
 // Images
 
 function images() {
-	return src('app/images/src/**/*')
-	.pipe(newer('app/images/dest'))
+	return src('app/images/src/**/*', { since: lastRun(images) })
 	.pipe(imagemin())
 	.pipe(dest('app/images/dest'))
 }
@@ -85,9 +83,9 @@ function deploy() {
 // Watching
 
 function startwatch() {
-	watch('app/' + preprocessor + '/**/*', parallel('styles'));
-	watch(['app/**/*.js', '!app/js/*.min.js'], parallel('scripts'));
-	watch(['app/**/*.{' + imageswatch + '}'], parallel('images'));
+	watch('app/' + preprocessor + '/**/*', styles);
+	watch(['app/**/*.js', '!app/js/*.min.js'], scripts);
+	watch(['app/**/*.{' + imageswatch + '}'], images);
 	watch(['app/**/*.{' + fileswatch + '}']).on('change', browserSync.reload);
 }
 
