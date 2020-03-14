@@ -13,6 +13,7 @@ const browserSync  = require('browser-sync').create();
 const uglify       = require('gulp-uglify-es').default;
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin     = require('gulp-imagemin');
+const newer        = require('gulp-newer');
 const rsync        = require('gulp-rsync');
 const del          = require('del');
 
@@ -54,7 +55,8 @@ function scripts() {
 // Images
 
 function images() {
-	return src('app/images/src/**/*', { since: lastRun(images) })
+	return src('app/images/src/**/*')
+	.pipe(newer('app/images/dest'))
 	.pipe(imagemin())
 	.pipe(dest('app/images/dest'))
 }
