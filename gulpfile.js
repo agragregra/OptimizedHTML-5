@@ -1,6 +1,41 @@
-let preprocessor = 'sass'; // Preprocessor (sass, scss, less, styl)
-let fileswatch   = 'html,htm,txt,json,md,woff2'; // List of files extensions for watching & hard reload (comma separated)
-let imageswatch  = 'jpg,jpeg,png,webp,svg'; // List of images extensions for watching & compression (comma separated)
+// VARIABLES & PATHS
+
+let preprocessor = 'sass', // Preprocessor (sass, scss, less, styl)
+		fileswatch   = 'html,htm,txt,json,md,woff2', // List of files extensions for watching & hard reload (comma separated)
+		imageswatch  = 'jpg,jpeg,png,webp,svg', // List of images extensions for watching & compression (comma separated)
+		baseDir      = 'app', // Base dir path without «/» at the end
+		online       = true; // If «false» - Browsersync will work offline without internet connection
+
+let path = {
+
+	src: {
+		styles: baseDir + '/' + preprocessor + '/main.*',
+		images: baseDir + '/images/src/**/*',
+		scripts: [
+			// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
+			baseDir + '/js/app.js' // app.js. Always at the end
+		]
+	},
+
+	dest: {
+		styles: baseDir + '/css',
+		scripts: baseDir + '/js',
+		images: baseDir + '/images/dest',
+	},
+
+	deploy: {
+		hostname: 'username@yousite.com', // Deploy hostname
+		destination: 'yousite/public_html/', // Deploy destination
+		include: [/* '*.htaccess' */], // Included files to deploy
+		exclude: [ '**/Thumbs.db', '**/*.DS_Store' ], // Excluded files from deploy
+	},
+
+	cssOutputName: 'app.min.css',
+	jsOutputName: 'app.min.js',
+
+}
+
+// LOGIC
 
 const { src, dest, parallel, series, watch, lastRun } = require('gulp');
 const sass         = require('gulp-sass');
@@ -17,64 +52,51 @@ const newer        = require('gulp-newer');
 const rsync        = require('gulp-rsync');
 const del          = require('del');
 
-// Local Server
-
 function browsersync() {
 	browserSync.init({
-		server: { baseDir: 'app' },
+		server: { baseDir: baseDir + '/' },
 		notify: false,
-		// online: false, // Work offline without internet connection
+		online: online
 	})
 }
 
-// Custom Styles
-
 function styles() {
-	return src('app/' + preprocessor + '/main.*')
+	return src(path.src.styles)
 	.pipe(eval(preprocessor)())
-	.pipe(concat('app.min.css'))
+	.pipe(concat(path.cssOutputName))
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } }))
-	.pipe(dest('app/css'))
+	.pipe(dest(path.dest.styles))
 	.pipe(browserSync.stream())
 }
-
-// Scripts & JS Libraries
 
 function scripts() {
-	return src([
-		// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
-		'app/js/app.js' // app.js. Always at the end
-		])
-	.pipe(concat('app.min.js'))
-	.pipe(uglify()) // Minify JS (opt.)
-	.pipe(dest('app/js'))
+	return src(path.src.scripts)
+	.pipe(concat(path.jsOutputName))
+	.pipe(uglify())
+	.pipe(dest(path.dest.scripts))
 	.pipe(browserSync.stream())
 }
 
-// Images
-
 function images() {
-	return src('app/images/src/**/*')
-	.pipe(newer('app/images/dest'))
+	return src(path.src.images)
+	.pipe(newer(path.dest.images))
 	.pipe(imagemin())
-	.pipe(dest('app/images/dest'))
+	.pipe(dest(path.dest.images))
 }
 
 function cleanimg() {
-	return del('app/images/dest/**/*', { force: true })
+	return del('' + path.dest.images + '/**/*', { force: true })
 }
 
-// Deploy
-
 function deploy() {
-	return src('app/')
+	return src(baseDir + '/')
 	.pipe(rsync({
-		root: 'app/',
-		hostname: 'username@yousite.com',
-		destination: 'yousite/public_html/',
-		// include: ['*.htaccess'], // Included files
-		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excluded files
+		root: baseDir + '/',
+		hostname: path.deploy.hostname,
+		destination: path.deploy.destination,
+		include: path.deploy.include,
+		exclude: path.deploy.exclude,
 		recursive: true,
 		archive: true,
 		silent: false,
@@ -82,13 +104,11 @@ function deploy() {
 	}))
 }
 
-// Watching
-
 function startwatch() {
-	watch('app/' + preprocessor + '/**/*', styles);
-	watch(['app/**/*.js', '!app/js/*.min.js'], scripts);
-	watch(['app/**/*.{' + imageswatch + '}'], images);
-	watch(['app/**/*.{' + fileswatch + '}']).on('change', browserSync.reload);
+	watch(baseDir + '/' + preprocessor + '/**/*', styles);
+	watch(baseDir + '/**/*.{' + imageswatch + '}', images);
+	watch(baseDir + '/**/*.{' + fileswatch + '}').on('change', browserSync.reload);
+	watch([baseDir + '/**/*.js', '!' + path.dest.scripts + '/*.min.js'], scripts);
 }
 
 exports.browsersync = browsersync;
