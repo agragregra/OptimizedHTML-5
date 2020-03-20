@@ -9,8 +9,8 @@ let preprocessor = 'sass', // Preprocessor (sass, scss, less, styl)
 let path = {
 
 	src: {
-		styles: baseDir + '/' + preprocessor + '/main.*',
-		images: baseDir + '/images/src/**/*',
+		styles:  baseDir + '/' + preprocessor + '/main.*',
+		images:  baseDir + '/images/src/**/*',
 		scripts: [
 			// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
 			baseDir + '/js/app.js' // app.js. Always at the end
