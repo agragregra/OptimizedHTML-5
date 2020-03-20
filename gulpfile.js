@@ -8,17 +8,17 @@ let preprocessor = 'sass', // Preprocessor (sass, scss, less, styl)
 
 let paths = {
 
-	styles: {
-		src:  baseDir + '/' + preprocessor + '/main.*',
-		dest: baseDir + '/css',
-	},
-
 	scripts: {
-		src:  [
+		src: [
 			// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
 			baseDir + '/js/app.js' // app.js. Always at the end
 		],
 		dest: baseDir + '/js',
+	},
+
+	styles: {
+		src:  baseDir + '/' + preprocessor + '/main.*',
+		dest: baseDir + '/css',
 	},
 
 	images: {
@@ -63,6 +63,14 @@ function browsersync() {
 	})
 }
 
+function scripts() {
+	return src(paths.scripts.src)
+	.pipe(concat(paths.jsOutputName))
+	.pipe(uglify())
+	.pipe(dest(paths.scripts.dest))
+	.pipe(browserSync.stream())
+}
+
 function styles() {
 	return src(paths.styles.src)
 	.pipe(eval(preprocessor)())
@@ -70,14 +78,6 @@ function styles() {
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } }))
 	.pipe(dest(paths.styles.dest))
-	.pipe(browserSync.stream())
-}
-
-function scripts() {
-	return src(paths.scripts.src)
-	.pipe(concat(paths.jsOutputName))
-	.pipe(uglify())
-	.pipe(dest(paths.scripts.dest))
 	.pipe(browserSync.stream())
 }
 
