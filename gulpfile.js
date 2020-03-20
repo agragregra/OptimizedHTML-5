@@ -6,21 +6,24 @@ let preprocessor = 'sass', // Preprocessor (sass, scss, less, styl)
     baseDir      = 'app', // Base dir path without «/» at the end
     online       = true; // If «false» - Browsersync will work offline without internet connection
 
-let path = {
+let paths = {
 
-	src: {
-		styles:  baseDir + '/' + preprocessor + '/main.*',
-		images:  baseDir + '/images/src/**/*',
-		scripts: [
-			// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
-			baseDir + '/js/app.js' // app.js. Always at the end
-		]
+	styles: {
+		src:  baseDir + '/' + preprocessor + '/main.*',
+		dest: baseDir + '/css',
 	},
 
-	dest: {
-		styles:  baseDir + '/css',
-		images:  baseDir + '/images/dest',
-		scripts: baseDir + '/js',
+	scripts: {
+		src:  [
+			// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
+			baseDir + '/js/app.js' // app.js. Always at the end
+		],
+		dest: baseDir + '/js',
+	},
+
+	images: {
+		src:  baseDir + '/images/src/**/*',
+		dest: baseDir + '/images/dest',
 	},
 
 	deploy: {
@@ -61,42 +64,42 @@ function browsersync() {
 }
 
 function styles() {
-	return src(path.src.styles)
+	return src(paths.styles.src)
 	.pipe(eval(preprocessor)())
-	.pipe(concat(path.cssOutputName))
+	.pipe(concat(paths.cssOutputName))
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } }))
-	.pipe(dest(path.dest.styles))
+	.pipe(dest(paths.styles.dest))
 	.pipe(browserSync.stream())
 }
 
 function scripts() {
-	return src(path.src.scripts)
-	.pipe(concat(path.jsOutputName))
+	return src(paths.scripts.src)
+	.pipe(concat(paths.jsOutputName))
 	.pipe(uglify())
-	.pipe(dest(path.dest.scripts))
+	.pipe(dest(paths.scripts.dest))
 	.pipe(browserSync.stream())
 }
 
 function images() {
-	return src(path.src.images)
-	.pipe(newer(path.dest.images))
+	return src(paths.images.src)
+	.pipe(newer(paths.images.dest))
 	.pipe(imagemin())
-	.pipe(dest(path.dest.images))
+	.pipe(dest(paths.images.dest))
 }
 
 function cleanimg() {
-	return del('' + path.dest.images + '/**/*', { force: true })
+	return del('' + paths.images.dest + '/**/*', { force: true })
 }
 
 function deploy() {
 	return src(baseDir + '/')
 	.pipe(rsync({
 		root: baseDir + '/',
-		hostname: path.deploy.hostname,
-		destination: path.deploy.destination,
-		include: path.deploy.include,
-		exclude: path.deploy.exclude,
+		hostname: paths.deploy.hostname,
+		destination: paths.deploy.destination,
+		include: paths.deploy.include,
+		exclude: paths.deploy.exclude,
 		recursive: true,
 		archive: true,
 		silent: false,
@@ -108,7 +111,7 @@ function startwatch() {
 	watch(baseDir  + '/**/' + preprocessor + '/**/*', styles);
 	watch(baseDir  + '/**/*.{' + imageswatch + '}', images);
 	watch(baseDir  + '/**/*.{' + fileswatch + '}').on('change', browserSync.reload);
-	watch([baseDir + '/**/*.js', '!' + path.dest.scripts + '/*.min.js'], scripts);
+	watch([baseDir + '/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], scripts);
 }
 
 exports.browsersync = browsersync;
