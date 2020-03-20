@@ -19,8 +19,8 @@ let path = {
 
 	dest: {
 		styles: baseDir + '/css',
-		scripts: baseDir + '/js',
 		images: baseDir + '/images/dest',
+		scripts: baseDir + '/js',
 	},
 
 	deploy: {
