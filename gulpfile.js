@@ -18,20 +18,20 @@ let path = {
 	},
 
 	dest: {
-		styles: baseDir + '/css',
-		images: baseDir + '/images/dest',
+		styles:  baseDir + '/css',
+		images:  baseDir + '/images/dest',
 		scripts: baseDir + '/js',
 	},
 
 	deploy: {
-		hostname: 'username@yousite.com', // Deploy hostname
+		hostname:    'username@yousite.com', // Deploy hostname
 		destination: 'yousite/public_html/', // Deploy destination
-		include: [/* '*.htaccess' */], // Included files to deploy
-		exclude: [ '**/Thumbs.db', '**/*.DS_Store' ], // Excluded files from deploy
+		include:     [/* '*.htaccess' */], // Included files to deploy
+		exclude:     [ '**/Thumbs.db', '**/*.DS_Store' ], // Excluded files from deploy
 	},
 
 	cssOutputName: 'app.min.css',
-	jsOutputName: 'app.min.js',
+	jsOutputName:  'app.min.js',
 
 }
 
