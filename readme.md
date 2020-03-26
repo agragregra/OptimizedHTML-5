@@ -65,7 +65,7 @@
 	<li><strong>900</strong> - Extra Black or Fat or Ultra Blac</li>
 </ul>
 
-<h3>Issues<h3>
+<h3>Issues</h3>
 
 <ol>
 	<li>Long Preprocessor compile: Disable the "safe write" option in PHPStorm settings.</li>
