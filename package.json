@@ -9,7 +9,7 @@
 	"author": "WebDesign Master",
 	"license": "ISC",
 	"devDependencies": {
-		"bootstrap": "^4.4.1",
+		"bootstrap": "^4.5.0",
 		"browser-sync": "^2.26.7",
 		"del": "^5.1.0",
 		"gulp": "^4.0.2",
@@ -19,7 +19,7 @@
 		"gulp-imagemin": "^7.1.0",
 		"gulp-less": "^4.0.1",
 		"gulp-newer": "^1.4.0",
-		"gulp-rsync": "0.0.8",
+		"gulp-rsync": "0.0.9",
 		"gulp-sass": "^4.1.0",
 		"gulp-stylus": "^2.7.0",
 		"gulp-uglify-es": "^2.0.0"
