@@ -110,7 +110,7 @@ function deploy() {
 function startwatch() {
 	watch(baseDir  + '/' + preprocessor + '/**/*', styles);
 	watch(baseDir  + '/images/src/*.{' + imageswatch + '}', images);
-	watch(baseDir  + '/**/*.{' + fileswatch + '}').on('change', browserSync.reload);
+	watch(baseDir  + '/*.{' + fileswatch + '}').on('change', browserSync.reload);
 	watch([baseDir + '/js/*.js', '!' + paths.scripts.dest + '/*.min.js'], scripts);
 }
 
