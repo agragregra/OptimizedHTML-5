@@ -108,10 +108,10 @@ function deploy() {
 }
 
 function startwatch() {
-	watch(baseDir  + '/**/' + preprocessor + '/**/*', styles);
-	watch(baseDir  + '/**/*.{' + imageswatch + '}', images);
-	watch(baseDir  + '/**/*.{' + fileswatch + '}').on('change', browserSync.reload);
-	watch([baseDir + '/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], scripts);
+	watch(baseDir  + '/**/' + preprocessor + '/**/*', {usePolling: true}, styles);
+	watch(baseDir  + '/**/*.{' + imageswatch + '}', {usePolling: true}, images);
+	watch(baseDir  + '/**/*.{' + fileswatch + '}', {usePolling: true}).on('change', browserSync.reload);
+	watch([baseDir + '/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], {usePolling: true}, scripts);
 }
 
 exports.browsersync = browsersync;
