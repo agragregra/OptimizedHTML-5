@@ -9,8 +9,8 @@
 	"author": "WebDesign Master",
 	"license": "ISC",
 	"devDependencies": {
-		"bootstrap": "^4.5.2",
-		"browser-sync": "^2.26.12",
+		"bootstrap": "^4.5.3",
+		"browser-sync": "^2.26.13",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^7.0.1",
