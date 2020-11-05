@@ -89,8 +89,8 @@ function userscripts() {
 
 function scripts() {
 	return src([
-		baseDir + '/js/_tmp/' + 'plugins.min.js',
-		baseDir + '/js/_tmp/' + 'userscripts.min.js'
+		baseDir + '/js/_tmp/plugins.min.js',
+		baseDir + '/js/_tmp/userscripts.min.js'
 	])
 	.pipe(concat(paths.jsOutputName))
 	.pipe(uglify())
