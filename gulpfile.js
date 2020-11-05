@@ -8,12 +8,16 @@ let preprocessor = 'sass', // Preprocessor (sass, scss, less, styl)
 
 let paths = {
 
-	scripts: {
+	plugins: {
 		src: [
 			// 'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
+		]
+	},
+
+	userscripts: {
+		src: [
 			baseDir + '/js/app.js' // app.js. Always at the end
-		],
-		dest: baseDir + '/js',
+		]
 	},
 
 	styles: {
@@ -48,7 +52,8 @@ const styl         = require('gulp-stylus');
 const cleancss     = require('gulp-clean-css');
 const concat       = require('gulp-concat');
 const browserSync  = require('browser-sync').create();
-const uglify       = require('gulp-uglify-es').default;
+const babel        = require('gulp-babel');
+const uglify       = require('gulp-uglify');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin     = require('gulp-imagemin');
 const newer        = require('gulp-newer');
@@ -63,12 +68,33 @@ function browsersync() {
 	})
 }
 
+function plugins() {
+	if (paths.plugins.src != '') {
+		return src(paths.plugins.src)
+		.pipe(concat('plugins.min.js'))
+		.pipe(dest(baseDir + '/js/_tmp'))
+	} else {
+		async function createFile() {
+			require('fs').writeFileSync(baseDir + '/js/_tmp/plugins.min.js', '');
+		}; return createFile();
+	}
+}
+
+function userscripts() {
+	return src(paths.userscripts.src)
+	.pipe(babel({ presets: ['@babel/env'] }))
+	.pipe(concat('userscripts.min.js'))
+	.pipe(dest(baseDir + '/js/_tmp'))
+}
+
 function scripts() {
-	return src(paths.scripts.src)
+	return src([
+		baseDir + '/js/_tmp/' + 'plugins.min.js',
+		baseDir + '/js/_tmp/' + 'userscripts.min.js'
+	])
 	.pipe(concat(paths.jsOutputName))
 	.pipe(uglify())
-	.pipe(dest(paths.scripts.dest))
-	.pipe(browserSync.stream())
+	.pipe(dest(baseDir + '/js'))
 }
 
 function styles() {
@@ -111,14 +137,14 @@ function startwatch() {
 	watch(baseDir  + '/' + preprocessor + '/**/*', {usePolling: true}, styles);
 	watch(baseDir  + '/images/src/**/*.{' + imageswatch + '}', {usePolling: true}, images);
 	watch(baseDir  + '/**/*.{' + fileswatch + '}', {usePolling: true}).on('change', browserSync.reload);
-	watch([baseDir + '/js/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], {usePolling: true}, scripts);
+	watch([baseDir + '/js/**/*.js', '!' + baseDir + '/js/**/*.min.js'], {usePolling: true}, series(userscripts, scripts)).on('change', browserSync.reload);
 }
 
 exports.browsersync = browsersync;
-exports.assets      = series(cleanimg, styles, scripts, images);
+exports.scripts     = series(plugins, userscripts, scripts);
+exports.assets      = series(cleanimg, styles, plugins, userscripts, scripts, images);
 exports.styles      = styles;
-exports.scripts     = scripts;
 exports.images      = images;
 exports.cleanimg    = cleanimg;
 exports.deploy      = deploy;
-exports.default     = parallel(images, styles, scripts, browsersync, startwatch);
+exports.default     = series(plugins, userscripts, scripts, images, styles, parallel(browsersync, startwatch));
