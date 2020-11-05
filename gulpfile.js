@@ -71,11 +71,11 @@ function browsersync() {
 function plugins() {
 	if (paths.plugins.src != '') {
 		return src(paths.plugins.src)
-		.pipe(concat('plugins.min.js'))
+		.pipe(concat('plugins.tmp.js'))
 		.pipe(dest(baseDir + '/js/_tmp'))
 	} else {
 		async function createFile() {
-			require('fs').writeFileSync(baseDir + '/js/_tmp/plugins.min.js', '');
+			require('fs').writeFileSync(baseDir + '/js/_tmp/plugins.tmp.js', '');
 		}; return createFile();
 	}
 }
@@ -83,14 +83,14 @@ function plugins() {
 function userscripts() {
 	return src(paths.userscripts.src)
 	.pipe(babel({ presets: ['@babel/env'] }))
-	.pipe(concat('userscripts.min.js'))
+	.pipe(concat('userscripts.tmp.js'))
 	.pipe(dest(baseDir + '/js/_tmp'))
 }
 
 function scripts() {
 	return src([
-		baseDir + '/js/_tmp/plugins.min.js',
-		baseDir + '/js/_tmp/userscripts.min.js'
+		baseDir + '/js/_tmp/plugins.tmp.js',
+		baseDir + '/js/_tmp/userscripts.tmp.js'
 	])
 	.pipe(concat(paths.jsOutputName))
 	.pipe(uglify())
@@ -137,7 +137,7 @@ function startwatch() {
 	watch(baseDir  + '/' + preprocessor + '/**/*', {usePolling: true}, styles);
 	watch(baseDir  + '/images/src/**/*.{' + imageswatch + '}', {usePolling: true}, images);
 	watch(baseDir  + '/**/*.{' + fileswatch + '}', {usePolling: true}).on('change', browserSync.reload);
-	watch([baseDir + '/js/**/*.js', '!' + baseDir + '/js/**/*.min.js'], {usePolling: true}, series(plugins, userscripts, scripts)).on('change', browserSync.reload);
+	watch([baseDir + '/js/**/*.js', '!' + baseDir + '/js/**/*.min.js', '!' + baseDir + '/js/**/*.tmp.js'], {usePolling: true}, series(plugins, userscripts, scripts)).on('change', browserSync.reload);
 }
 
 exports.browsersync = browsersync;
