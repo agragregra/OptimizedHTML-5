@@ -137,7 +137,7 @@ function startwatch() {
 	watch(baseDir  + '/' + preprocessor + '/**/*', {usePolling: true}, styles);
 	watch(baseDir  + '/images/src/**/*.{' + imageswatch + '}', {usePolling: true}, images);
 	watch(baseDir  + '/**/*.{' + fileswatch + '}', {usePolling: true}).on('change', browserSync.reload);
-	watch([baseDir + '/js/**/*.js', '!' + baseDir + '/js/**/*.min.js'], {usePolling: true}, series(userscripts, scripts)).on('change', browserSync.reload);
+	watch([baseDir + '/js/**/*.js', '!' + baseDir + '/js/**/*.min.js'], {usePolling: true}, series(plugins, userscripts, scripts)).on('change', browserSync.reload);
 }
 
 exports.browsersync = browsersync;
