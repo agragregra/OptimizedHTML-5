@@ -84,6 +84,7 @@ function userscripts() {
 	return src(paths.userscripts.src)
 	.pipe(babel({ presets: ['@babel/env'] }))
 	.pipe(concat('userscripts.tmp.js'))
+	.pipe(uglify())
 	.pipe(dest(baseDir + '/js/_tmp'))
 }
 
@@ -93,7 +94,6 @@ function scripts() {
 		baseDir + '/js/_tmp/userscripts.tmp.js'
 	])
 	.pipe(concat(paths.jsOutputName))
-	.pipe(uglify())
 	.pipe(dest(baseDir + '/js'))
 }
 
