@@ -11,7 +11,7 @@
 
 <pre>git clone https://github.com/agragregra/oh5</pre>
 
-<p>Clone into the current folder and remove all unnecessary:</p>
+<p>Clone into the current folder and remove all unnecessary (one command):</p>
 
 <pre>git clone https://github.com/agragregra/oh5 .; rm -rf trunk .gitignore readme.md .git</pre>
 
