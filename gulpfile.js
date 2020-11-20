@@ -28,7 +28,7 @@ function scripts() {
 	])
 	.pipe(webpack({ mode: 'production' }))
 	.pipe(babel({ presets: ['@babel/env'] }))
-	// .pipe(uglify()) // Final minify JavaScript
+	.pipe(uglify()) // Final minify JavaScript
 	.pipe(concat('app.min.js'))
 	.pipe(dest('app/js'))
 	.pipe(browserSync.stream())
