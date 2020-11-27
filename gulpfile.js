@@ -3,10 +3,8 @@ let fileswatch = 'html,htm,txt,json,md,woff2' // List of files extensions for wa
 const { src, dest, parallel, series, watch } = require('gulp')
 const browserSync  = require('browser-sync').create()
 const webpack      = require('webpack-stream')
-const babel        = require('gulp-babel')
-const uglify       = require('gulp-uglify')
 const sass         = require('gulp-sass')
-const concat       = require('gulp-concat')
+const rename       = require('gulp-rename')
 const autoprefixer = require('gulp-autoprefixer')
 const imagemin     = require('gulp-imagemin')
 const newer        = require('gulp-newer')
@@ -26,10 +24,24 @@ function scripts() {
 		// 'app/js/other_script.js', // Other script example
 		'app/js/app.js' // Always at the end
 	])
-	.pipe(webpack({ mode: 'production' }))
-	.pipe(babel({ presets: ['@babel/env'] }))
-	.pipe(uglify()) // Final minify JavaScript
-	.pipe(concat('app.min.js'))
+	.pipe(webpack({
+		mode: 'production',
+		module: {
+			rules: [
+				{
+					test: /\.(js)$/,
+					exclude: /(node_modules)/,
+					loader: 'babel-loader',
+					query: {
+						presets: ['@babel/env']
+					}
+				}
+			]
+		}
+	})).on('error', function handleError() {
+		this.emit('end');
+	})
+	.pipe(rename('app.min.js'))
 	.pipe(dest('app/js'))
 	.pipe(browserSync.stream())
 }
@@ -37,7 +49,7 @@ function scripts() {
 function styles() {
 	return src('app/sass/main.sass')
 	.pipe(sass({ outputStyle: 'compressed' }))
-	.pipe(concat('app.min.css'))
+	.pipe(rename('app.min.css'))
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 	.pipe(dest('app/css'))
 	.pipe(browserSync.stream())
