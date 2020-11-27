@@ -20,10 +20,7 @@ function browsersync() {
 }
 
 function scripts() {
-	return src([
-		// 'app/js/other_script.js', // Other script example
-		'app/js/app.js' // Always at the end
-	])
+	return src('app/js/app.js')
 	.pipe(webpack({
 		mode: 'production',
 		module: {
