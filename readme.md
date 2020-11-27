@@ -34,7 +34,7 @@
 
 <ol>
 	<li>All custom <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/js/app.js</strong></li>
-	<li>All custom <strong title="styles task"><em>styles</em></strong> located in <strong>app/{preprocessor}/main.sass</strong></li>
+	<li>All custom <strong title="styles task"><em>styles</em></strong> located in <strong>app/sass/main.sass</strong></li>
 	<li>All preprocessor <strong>configs</strong> placed in <strong>app/sass/_config.sass</strong></li>
 	<li>All <strong>images</strong> sources placed in <strong>app/images/src/</strong> folder.</li>
 </ol>
