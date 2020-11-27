@@ -39,7 +39,7 @@ function scripts() {
 			]
 		}
 	})).on('error', function handleError() {
-		this.emit('end');
+		this.emit('end')
 	})
 	.pipe(rename('app.min.js'))
 	.pipe(dest('app/js'))
