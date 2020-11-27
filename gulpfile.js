@@ -49,8 +49,8 @@ function scripts() {
 function styles() {
 	return src('app/sass/main.sass')
 	.pipe(sass({ outputStyle: 'compressed' }))
-	.pipe(rename('app.min.css'))
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+	.pipe(rename('app.min.css'))
 	.pipe(dest('app/css'))
 	.pipe(browserSync.stream())
 }
@@ -85,7 +85,7 @@ function startwatch() {
 	watch('app/sass/**/*', { usePolling: true }, styles)
 	watch(['app/js/**/*.js', '!app/js/**/*.min.js'], { usePolling: true }, scripts)
 	watch('app/img/src/**/*.{jpg,jpeg,png,webp,svg,gif}', { usePolling: true }, images)
-	watch('app/**/*.{' + fileswatch + '}', { usePolling: true }).on('change', browserSync.reload)
+	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
 exports.assets   = series(cleanimg, scripts, images)
