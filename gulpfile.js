@@ -74,7 +74,7 @@ function deploy() {
 }
 
 function startwatch() {
-	watch(['app/styles/**/*.sass'], { usePolling: true }, styles)
+	watch('app/styles/**/*.sass', { usePolling: true }, styles)
 	watch(['app/scripts/**/*.js', '!app/scripts/**/*.min.js'], { usePolling: true }, scripts)
 	watch(['app/images/**/*.{jpg,jpeg,png,webp,svg,gif}', '!app/images/dist/**'], { usePolling: true }, images)
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
