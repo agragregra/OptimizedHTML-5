@@ -20,8 +20,5 @@
 		"gulp-rsync": "0.0.9",
 		"gulp-sass": "^4.1.0",
 		"webpack-stream": "^6.1.1"
-	},
-	"dependencies": {
-		"jquery": "^3.5.1"
 	}
 }
