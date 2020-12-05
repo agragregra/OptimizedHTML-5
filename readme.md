@@ -29,12 +29,16 @@
 
 <h2>Basic rules</h2>
 
+<h4>src's</h4>
+
 <ol>
 	<li>All src <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/app.js</strong></li>
 	<li>All src <strong title="styles task"><em>styles</em></strong> located in <strong>app/styles/main.sass</strong></li>
 	<li>Preprocessor <strong>config</strong> placed in <strong>app/styles/_config.sass</strong></li>
 	<li>All src <strong>images</strong> placed in <strong>app/images/</strong> folder.</li>
 </ol>
+
+<h4>dists</h4>
 
 <ol>
 	<li>All dist <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/dist/app.min.js</strong></li>
