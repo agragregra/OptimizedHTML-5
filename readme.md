@@ -33,8 +33,8 @@
 
 <ol>
 	<li>All src|dist <strong>scripts</strong> located in <strong>app/js/app.js|app.min.js</strong></li>
-	<li>All src <strong>styles</strong> located in <strong>app/sass/main.sass</strong></li>
-	<li>All dist <strong>styles</strong> located in <strong>app/css/main.min.css</strong></li>
+	<li>Main Sass src file <strong>styles</strong> located in <strong>app/sass/main.sass</strong></li>
+	<li>All compressed <strong>styles</strong> located in <strong>app/css/main.min.css</strong></li>
 	<li>Preprocessor <strong>config</strong> placed in <strong>app/sass/_config.sass</strong></li>
 	<li>All src <strong>images</strong> placed in <strong>app/img/src/</strong> folder.</li>
 </ol>
