@@ -56,6 +56,7 @@ function images() {
 	.pipe(newer('app/images/dist'))
 	.pipe(imagemin())
 	.pipe(dest('app/images/dist'))
+	.pipe(browserSync.stream())
 }
 
 function deploy() {
