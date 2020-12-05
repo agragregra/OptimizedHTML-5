@@ -9,8 +9,6 @@
 
 <h2>How to use OptimizedHTML 5</h2>
 
-<pre>git clone https://github.com/agragregra/oh5</pre>
-
 <p>Clone into the current folder and remove all unnecessary (one command):</p>
 
 <pre>git clone https://github.com/agragregra/oh5 .; rm -rf trunk .gitignore readme.md .git</pre>
@@ -24,18 +22,24 @@
 <h2>Main Gulp tasks:</h2>
 
 <ul>
-	<li><strong title="gulp task"><em>gulp</em></strong>: run default gulp task (images, styles, scripts, browsersync, startwatch)</li>
-	<li><strong title="styles, scripts, images, assets tasks"><em>styles, scripts, images, assets</em></strong>: build assets (css, js, images or all)</li>
-	<li><strong title="rsync task"><em>rsync</em></strong>: project deployment via <strong>RSYNC</strong></li>
+	<li><strong title="gulp task"><em>gulp</em></strong>: run default gulp task (scripts, images, styles, browsersync, startwatch)</li>
+	<li><strong title="styles, scripts, images, assets tasks"><em>scripts, styles, images, assets</em></strong>: build assets (css, js, images or all)</li>
+	<li><strong title="deploy task"><em>deploy</em></strong>: project deployment via <strong>RSYNC</strong></li>
 </ul>
 
 <h2>Basic rules</h2>
 
 <ol>
-	<li>All custom <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/js/app.js</strong></li>
-	<li>All custom <strong title="styles task"><em>styles</em></strong> located in <strong>app/sass/main.sass</strong></li>
-	<li>All preprocessor <strong>configs</strong> placed in <strong>app/sass/_config.sass</strong></li>
-	<li>All <strong>images</strong> sources placed in <strong>app/images/src/</strong> folder.</li>
+	<li>All src <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/app.js</strong></li>
+	<li>All src <strong title="styles task"><em>styles</em></strong> located in <strong>app/styles/main.sass</strong></li>
+	<li>Preprocessor <strong>config</strong> placed in <strong>app/styles/_config.sass</strong></li>
+	<li>All src <strong>images</strong> placed in <strong>app/images/</strong> folder.</li>
+</ol>
+
+<ol>
+	<li>All dist <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/dist/app.min.js</strong></li>
+	<li>All dist <strong title="styles task"><em>styles</em></strong> located in <strong>app/styles/dist/app.min.css</strong></li>
+	<li>All dist <strong>images</strong> placed in <strong>app/images/dist</strong> folder.</li>
 </ol>
 
 <h2>Included features</h2>
@@ -47,11 +51,11 @@
 		<li><a href="https://getbootstrap.com/docs/4.0/layout/grid/">bootstrap-grid</a> (optional) - Bootstrap Grid collection</li>
 </ol>
 
-<h2>Caching</h2>
-
-<p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for htaccess resources caching.</p>
-
 <h2>Helpers</h2>
+
+<h3>Fonts</h3>
+
+<p>Converter recommended: <a href="https://www.fontsquirrel.com/tools/webfont-generator">https://www.fontsquirrel.com/tools/webfont-generator</a> or get from google-webfonts-helper: <a href="https://google-webfonts-helper.herokuapp.com/fonts">https://google-webfonts-helper.herokuapp.com/fonts</a></p>
 
 <h3>font-weight helper</h3>
 
@@ -66,6 +70,48 @@
 	<li><strong>800</strong> - Black or Extra Bold or Heavy</li>
 	<li><strong>900</strong> - Extra Black or Fat or Ultra Blac</li>
 </ul>
+
+<h2>Caching</h2>
+
+<p>Create or open <strong>.htaccess</strong> file in root folder of website (Apache). Place this code for resources caching:</p>
+
+<pre>
+&lt;ifModule mod_expires.c&gt;
+
+# Add correct content-type for fonts & SVG
+AddType application/font-woff2 .woff2
+AddType image/svg+xml .svg
+
+ExpiresActive On
+ExpiresDefault "access plus 5 seconds"
+
+# Cache Images
+ExpiresByType image/x-icon "access plus 2592000 seconds"
+ExpiresByType image/jpeg "access plus 2592000 seconds"
+ExpiresByType image/png "access plus 2592000 seconds"
+ExpiresByType image/gif "access plus 2592000 seconds"
+ExpiresByType image/svg+xml "access plus 2592000 seconds"
+
+# Cache Fonts
+ExpiresByType application/font-woff2 "access plus 2592000 seconds"
+ExpiresByType image/svg+xml "access plus 2592000 seconds"
+
+# Cache other content types (CSS, JS, HTML, XML)
+ExpiresByType text/css "access plus 604800 seconds"
+ExpiresByType text/javascript "access plus 2592000 seconds"
+ExpiresByType application/javascript "access plus 2592000 seconds"
+ExpiresByType application/x-javascript "access plus 2592000 seconds"
+ExpiresByType text/html "access plus 600 seconds"
+ExpiresByType application/xhtml+xml "access plus 600 seconds"
+
+&lt;/ifModule&gt;
+
+&lt;ifModule mod_deflate.c&gt;
+
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript application/font-woff2 image/svg+xml
+
+&lt;/ifModule&gt;
+</pre>
 
 <h2>Issues</h2>
 
