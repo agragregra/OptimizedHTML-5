@@ -32,11 +32,12 @@
 <h4>src's & dist's:</h4>
 
 <ol>
-	<li>All src|dist <strong>scripts</strong> located in <strong>app/js/app.js|app.min.js</strong></li>
-	<li>Main Sass src file <strong>styles</strong> located in <strong>app/sass/main.sass</strong></li>
-	<li>All compressed <strong>styles</strong> located in <strong>app/css/main.min.css</strong></li>
-	<li>Preprocessor <strong>config</strong> placed in <strong>app/sass/_config.sass</strong></li>
-	<li>All src <strong>images</strong> placed in <strong>app/img/src/</strong> folder.</li>
+	<li>All <strong>src|dist scripts</strong> located in <strong>app/js/app.js|app.min.js</strong></li>
+	<li><strong>Main Sass</strong> src file located in <strong>app/sass/main.sass</strong></li>
+	<li>All <strong>compressed styles</strong> located in <strong>app/css/main.min.css</strong></li>
+	<li>Project <strong>styles config</strong> placed in <strong>app/sass/_config.sass</strong></li>
+	<li>All <strong>src images</strong> placed in <strong>app/img/src/</strong> folder.</li>
+	<li>All <strong>compressed images</strong> placed in <strong>app/img/src/</strong> folder.</li>
 </ol>
 
 <h2>Included features</h2>
