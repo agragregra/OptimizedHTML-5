@@ -1,5 +1,5 @@
 <h1>OptimizedHTML 5</h1>
-<p>Lightweight Gulp Starter.</p>
+<p>Lightweight production ready Gulp starter.</p>
 
 <p>
 	<img src="https://raw.githubusercontent.com/agragregra/oh5/master/app/images/dist/preview.jpg" alt="Start HTML Template">
