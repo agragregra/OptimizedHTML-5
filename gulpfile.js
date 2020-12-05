@@ -66,7 +66,12 @@ function deploy() {
 		hostname: 'username@yousite.com',
 		destination: 'yousite/public_html/',
 		include: [/* '*.htaccess' */], // Included files to deploy,
-		exclude: [ '**/Thumbs.db', '**/*.DS_Store', '**/app.js', '**/*.sass' ],
+		exclude: [
+			'**/Thumbs.db',
+			'**/*.DS_Store',
+			'js/app.js',
+			'sass',
+		],
 		recursive: true,
 		archive: true,
 		silent: false,
