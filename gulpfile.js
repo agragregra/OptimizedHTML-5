@@ -9,7 +9,6 @@ const rename       = require('gulp-rename')
 const imagemin     = require('gulp-imagemin')
 const newer        = require('gulp-newer')
 const rsync        = require('gulp-rsync')
-const del          = require('del')
 
 function browsersync() {
 	browserSync.init({
@@ -59,10 +58,6 @@ function images() {
 	.pipe(dest('app/img/dest'))
 }
 
-function cleanimg() {
-	return del('app/img/dest/**/*', { force: true })
-}
-
 function deploy() {
 	return src('app/')
 	.pipe(rsync({
@@ -85,10 +80,9 @@ function startwatch() {
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
-exports.assets   = series(cleanimg, scripts, images)
 exports.scripts  = scripts
 exports.styles   = styles
 exports.images   = images
-exports.cleanimg = cleanimg
+exports.assets   = series(styles, scripts, images)
 exports.deploy   = deploy
 exports.default  = series(scripts, images, styles, parallel(browsersync, startwatch))

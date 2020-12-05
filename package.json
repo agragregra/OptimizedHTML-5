@@ -12,7 +12,6 @@
 		"babel-plugin-module-resolver": "^4.0.0",
 		"bootstrap": "^4.5.3",
 		"browser-sync": "^2.26.13",
-		"del": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-imagemin": "^7.1.0",
@@ -21,8 +20,5 @@
 		"gulp-rsync": "0.0.9",
 		"gulp-sass": "^4.1.0",
 		"webpack-stream": "^6.1.1"
-	},
-	"dependencies": {
-		"jquery": "^3.5.1"
 	}
 }
