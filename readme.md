@@ -29,21 +29,13 @@
 
 <h2>Basic rules</h2>
 
-<h4>src's:</h4>
+<h4>src's & dist's:</h4>
 
 <ol>
-	<li>All src <strong>scripts</strong> located in <strong>app/scripts/app.js</strong></li>
-	<li>All src <strong>styles</strong> located in <strong>app/styles/main.sass</strong></li>
+	<li>All src|dist <strong>scripts</strong> located in <strong>app/scripts/app.js|app.min.js</strong></li>
+	<li>All src|dist <strong>styles</strong> located in <strong>app/styles/main.sass|app.min.css</strong></li>
 	<li>Preprocessor <strong>config</strong> placed in <strong>app/styles/_config.sass</strong></li>
 	<li>All src <strong>images</strong> placed in <strong>app/images/</strong> folder.</li>
-</ol>
-
-<h4>dists:</h4>
-
-<ol>
-	<li>All dist <strong>scripts</strong> located in <strong>app/scripts/dist/app.min.js</strong></li>
-	<li>All dist <strong>styles</strong> located in <strong>app/styles/dist/app.min.css</strong></li>
-	<li>All dist <strong>images</strong> placed in <strong>app/images/dist</strong> folder.</li>
 </ol>
 
 <h2>Included features</h2>

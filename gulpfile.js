@@ -38,7 +38,7 @@ function scripts() {
 		this.emit('end')
 	})
 	.pipe(rename('app.min.js'))
-	.pipe(dest('app/scripts/dist'))
+	.pipe(dest('app/scripts'))
 	.pipe(browserSync.stream())
 }
 
@@ -47,7 +47,7 @@ function styles() {
 	.pipe(sass({ outputStyle: 'compressed' }))
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 	.pipe(rename('app.min.css'))
-	.pipe(dest('app/styles/dist'))
+	.pipe(dest('app/styles'))
 	.pipe(browserSync.stream())
 }
 
@@ -65,7 +65,7 @@ function deploy() {
 		hostname: 'username@yousite.com',
 		destination: 'yousite/public_html/',
 		include: [/* '*.htaccess' */], // Included files to deploy,
-		exclude: [ '**/Thumbs.db', '**/*.DS_Store' ],
+		exclude: [ '**/Thumbs.db', '**/*.DS_Store', '**/app.js', '**/*.sass' ],
 		recursive: true,
 		archive: true,
 		silent: false,
@@ -74,8 +74,8 @@ function deploy() {
 }
 
 function startwatch() {
-	watch(['app/styles/**/*', '!app/styles/dist/**'], { usePolling: true }, styles)
-	watch(['app/scripts/**/*.js', '!app/scripts/dist/**'], { usePolling: true }, scripts)
+	watch(['app/styles/**/*.sass'], { usePolling: true }, styles)
+	watch(['app/scripts/**/*.js', '!app/scripts/**/*.min.js'], { usePolling: true }, scripts)
 	watch(['app/images/**/*.{jpg,jpeg,png,webp,svg,gif}', '!app/images/dist/**'], { usePolling: true }, images)
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
