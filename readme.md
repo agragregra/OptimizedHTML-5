@@ -2,10 +2,10 @@
 <p>Lightweight production ready Gulp starter.</p>
 
 <p>
-	<img src="https://raw.githubusercontent.com/agragregra/oh5/master/app/images/dist/preview.jpg" alt="Start HTML Template">
+	<img src="https://raw.githubusercontent.com/agragregra/oh5/master/app/img/dist/preview.jpg" alt="Start HTML Template">
 </p>
 
-<p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp 4</strong>, <strong>Sass</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Uglify</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot). It uses best practices for <strong>responsive images</strong>, JavaScript, CSS, optimizing and contains a <strong>.htaccess</strong> file for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
+<p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp 4</strong>, <strong>Sass</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot). It uses best practices for <strong>responsive images</strong>, JavaScript, CSS, optimizing and contains a <strong>.htaccess</strong> code for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
 
 <h2>How to use OptimizedHTML 5</h2>
 
@@ -32,10 +32,11 @@
 <h4>src's & dist's:</h4>
 
 <ol>
-	<li>All src|dist <strong>scripts</strong> located in <strong>app/scripts/app.js|app.min.js</strong></li>
-	<li>All src|dist <strong>styles</strong> located in <strong>app/styles/main.sass|app.min.css</strong></li>
-	<li>Preprocessor <strong>config</strong> placed in <strong>app/styles/_config.sass</strong></li>
-	<li>All src <strong>images</strong> placed in <strong>app/images/</strong> folder.</li>
+	<li>All src|dist <strong>scripts</strong> located in <strong>app/js/app.js|app.min.js</strong></li>
+	<li>All src <strong>styles</strong> located in <strong>app/sass/main.sass</strong></li>
+	<li>All dist <strong>styles</strong> located in <strong>app/css/main.min.css</strong></li>
+	<li>Preprocessor <strong>config</strong> placed in <strong>app/sass/_config.sass</strong></li>
+	<li>All src <strong>images</strong> placed in <strong>app/img/src/</strong> folder.</li>
 </ol>
 
 <h2>Included features</h2>

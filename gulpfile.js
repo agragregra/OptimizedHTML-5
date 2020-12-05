@@ -19,7 +19,7 @@ function browsersync() {
 }
 
 function scripts() {
-	return src('app/scripts/app.js')
+	return src('app/js/app.js')
 	.pipe(webpack({
 		mode: 'production',
 		module: {
@@ -38,24 +38,24 @@ function scripts() {
 		this.emit('end')
 	})
 	.pipe(rename('app.min.js'))
-	.pipe(dest('app/scripts'))
+	.pipe(dest('app/js'))
 	.pipe(browserSync.stream())
 }
 
 function styles() {
-	return src('app/styles/main.sass')
+	return src('app/sass/main.sass')
 	.pipe(sass({ outputStyle: 'compressed' }))
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 	.pipe(rename('app.min.css'))
-	.pipe(dest('app/styles'))
+	.pipe(dest('app/css'))
 	.pipe(browserSync.stream())
 }
 
 function images() {
-	return src(['app/images/**/*', '!app/images/dist/**'])
-	.pipe(newer('app/images/dist'))
+	return src(['app/img/src/**/*'])
+	.pipe(newer('app/img/dist'))
 	.pipe(imagemin())
-	.pipe(dest('app/images/dist'))
+	.pipe(dest('app/img/dist'))
 }
 
 function deploy() {
@@ -74,9 +74,9 @@ function deploy() {
 }
 
 function startwatch() {
-	watch('app/styles/**/*.sass', { usePolling: true }, styles)
-	watch(['app/scripts/**/*.js', '!app/scripts/**/*.min.js'], { usePolling: true }, scripts)
-	watch(['app/images/**/*.{jpg,jpeg,png,webp,svg,gif}', '!app/images/dist/**'], { usePolling: true }, images)
+	watch('app/sass/**/*', { usePolling: true }, styles)
+	watch(['app/js/**/*.js', '!app/js/**/*.min.js'], { usePolling: true }, scripts)
+	watch('app/img/src/**/*.{jpg,jpeg,png,webp,svg,gif}', { usePolling: true }, images)
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
