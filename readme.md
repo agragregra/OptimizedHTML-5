@@ -22,9 +22,9 @@
 <h2>Main Gulp tasks:</h2>
 
 <ul>
-	<li><strong title="gulp task"><em>gulp</em></strong>: run default gulp task (scripts, images, styles, browsersync, startwatch)</li>
-	<li><strong title="styles, scripts, images, assets tasks"><em>scripts, styles, images, assets</em></strong>: build assets (css, js, images or all)</li>
-	<li><strong title="deploy task"><em>deploy</em></strong>: project deployment via <strong>RSYNC</strong></li>
+	<li><strong title="gulp task">gulp</strong>: run default gulp task (scripts, images, styles, browsersync, startwatch)</li>
+	<li><strong title="styles, scripts, images, assets tasks">scripts, styles, images, assets</strong>: build assets (css, js, images or all)</li>
+	<li><strong title="deploy task">deploy</strong>: project deployment via <strong>RSYNC</strong></li>
 </ul>
 
 <h2>Basic rules</h2>
@@ -32,8 +32,8 @@
 <h4>src's:</h4>
 
 <ol>
-	<li>All src <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/app.js</strong></li>
-	<li>All src <strong title="styles task"><em>styles</em></strong> located in <strong>app/styles/main.sass</strong></li>
+	<li>All src <strong title="scripts task">scripts</strong> located in <strong>app/scripts/app.js</strong></li>
+	<li>All src <strong title="styles task">styles</strong> located in <strong>app/styles/main.sass</strong></li>
 	<li>Preprocessor <strong>config</strong> placed in <strong>app/styles/_config.sass</strong></li>
 	<li>All src <strong>images</strong> placed in <strong>app/images/</strong> folder.</li>
 </ol>
@@ -41,8 +41,8 @@
 <h4>dists:</h4>
 
 <ol>
-	<li>All dist <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/dist/app.min.js</strong></li>
-	<li>All dist <strong title="styles task"><em>styles</em></strong> located in <strong>app/styles/dist/app.min.css</strong></li>
+	<li>All dist <strong title="scripts task">scripts</strong> located in <strong>app/scripts/dist/app.min.js</strong></li>
+	<li>All dist <strong title="styles task">styles</strong> located in <strong>app/styles/dist/app.min.css</strong></li>
 	<li>All dist <strong>images</strong> placed in <strong>app/images/dist</strong> folder.</li>
 </ol>
 
