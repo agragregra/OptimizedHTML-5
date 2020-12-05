@@ -29,7 +29,7 @@
 
 <h2>Basic rules</h2>
 
-<h3>src's:</h3>
+<h4>src's:</h4>
 
 <ol>
 	<li>All src <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/app.js</strong></li>
@@ -38,7 +38,7 @@
 	<li>All src <strong>images</strong> placed in <strong>app/images/</strong> folder.</li>
 </ol>
 
-<h3>dists:</h3>
+<h4>dists:</h4>
 
 <ol>
 	<li>All dist <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/scripts/dist/app.min.js</strong></li>
