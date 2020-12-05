@@ -37,7 +37,7 @@
 	<li>All <strong>compressed styles</strong> located in <strong>app/css/main.min.css</strong></li>
 	<li>Project <strong>styles config</strong> placed in <strong>app/sass/_config.sass</strong></li>
 	<li>All <strong>src images</strong> placed in <strong>app/img/src/</strong> folder.</li>
-	<li>All <strong>compressed images</strong> placed in <strong>app/img/src/</strong> folder.</li>
+	<li>All <strong>compressed images</strong> placed in <strong>app/img/dist/</strong> folder.</li>
 </ol>
 
 <h2>Included features</h2>
