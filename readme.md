@@ -25,6 +25,7 @@
 	<li><strong>gulp</strong>: run default gulp task (scripts, images, styles, browsersync, startwatch)</li>
 	<li><strong>scripts, styles, images, assets</strong>: build assets (css, js, images or all)</li>
 	<li><strong>deploy</strong>: project deployment via <strong>RSYNC</strong></li>
+	<li><strong>build</strong>: project build</li>
 </ul>
 
 <h2>Basic rules</h2>
@@ -39,6 +40,12 @@
 	<li>All <strong>src images</strong> placed in <strong>app/images/src/</strong> folder.</li>
 	<li>All <strong>compressed images</strong> placed in <strong>app/images/dist/</strong> folder.</li>
 </ol>
+
+<h4>Include parts of HTML code</h4>
+
+<p>The import of parts of the html code is implemented using SSI. You can import any part of the code using the construction:</p>
+
+<pre><!--#include virtual="parts/header.html" --></pre>
 
 <h2>Included features</h2>
 
