@@ -87,18 +87,13 @@ function cleandist() {
 }
 
 function deploy() {
-	return src('app/')
+	return src('dist/')
 		.pipe(rsync({
-			root: 'app/',
+			root: 'dist/',
 			hostname: 'username@yousite.com',
 			destination: 'yousite/public_html/',
 			include: [/* '*.htaccess' */], // Included files to deploy,
-			exclude: [
-				'**/Thumbs.db',
-				'**/*.DS_Store',
-				'js/app.js',
-				'sass',
-			],
+			exclude: [ '**/Thumbs.db', '**/*.DS_Store' ],
 			recursive: true,
 			archive: true,
 			silent: false,
