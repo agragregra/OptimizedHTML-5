@@ -43,7 +43,7 @@
 
 <h4>Include parts of HTML code:</h4>
 
-<p>Include parts of html code is implemented using SSI Browsersync server side. You can import any part of the code using the construction:</p>
+<p>Include parts of html code is implemented using SSI Browsersync server side. You can import any part of the code using construction:</p>
 
 <pre>&lt;!--#include virtual="parts/header.html" --&gt;</pre>
 
