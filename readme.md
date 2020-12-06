@@ -53,6 +53,8 @@
 
 <h3>Fonts</h3>
 
+<p>The woff2 fonts are currently recommended.</p>
+
 <p>Converter recommended: <a href="https://www.fontsquirrel.com/tools/webfont-generator">https://www.fontsquirrel.com/tools/webfont-generator</a><br>
 Or get from google-webfonts-helper: <a href="https://google-webfonts-helper.herokuapp.com/fonts">https://google-webfonts-helper.herokuapp.com/fonts</a></p>
 
