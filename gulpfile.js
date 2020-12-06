@@ -69,7 +69,7 @@ function images() {
 function buildcopy() {
 	return src([
 		'{app/js,app/css}/*.min.*',
-		'app/images/**/*',
+		'app/images/**/*.*',
 		'!app/images/src/**/*',
 		'app/fonts/**/*'
 	], { base: 'app/' })
@@ -84,10 +84,6 @@ function buildhtml() {
 
 function cleandist() {
 	return del('dist/**/*', { force: true })
-}
-
-function cleanimagesrc() {
-	return del('dist/images/src', { force: true })
 }
 
 function deploy() {
@@ -122,5 +118,5 @@ exports.styles  = styles
 exports.images  = images
 exports.deploy  = deploy
 exports.assets  = series(styles, scripts, images)
-exports.build   = series(cleandist, scripts, styles, images, buildcopy, buildhtml, cleanimagesrc)
+exports.build   = series(cleandist, scripts, styles, images, buildcopy, buildhtml)
 exports.default = series(scripts, images, styles, parallel(browsersync, startwatch))
