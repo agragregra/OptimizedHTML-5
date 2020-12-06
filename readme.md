@@ -45,7 +45,7 @@
 
 <p>The import of parts of the html code is implemented using SSI. You can import any part of the code using the construction:</p>
 
-<pre><!--#include virtual="parts/header.html" --></pre>
+<pre>&lt;!--#include virtual="parts/header.html" --&gt;</pre>
 
 <h2>Included features</h2>
 
