@@ -17,7 +17,7 @@ function browsersync() {
 			baseDir: 'app/',
 			middleware: ssi({ baseDir: 'app/', ext: '.html' })
 		},
-		tunnel: 'yousutename2', // Attempt to use the URL http://yousutename2.loca.lt
+		tunnel: 'yousutename', // Attempt to use the URL http://yousutename.loca.lt
 		notify: false,
 		online: true
 	})
