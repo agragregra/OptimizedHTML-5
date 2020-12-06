@@ -3,6 +3,7 @@ let fileswatch = 'html,htm,txt,json,md,woff2' // List of files extensions for wa
 const { src, dest, parallel, series, watch } = require('gulp')
 const browserSync  = require('browser-sync').create()
 const ssi          = require('browsersync-ssi')
+const buildssi     = require('gulp-ssi')
 const webpack      = require('webpack-stream')
 const sass         = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
@@ -10,6 +11,7 @@ const rename       = require('gulp-rename')
 const imagemin     = require('gulp-imagemin')
 const newer        = require('gulp-newer')
 const rsync        = require('gulp-rsync')
+const del          = require('del')
 
 function browsersync() {
 	browserSync.init({
@@ -64,6 +66,30 @@ function images() {
 		.pipe(browserSync.stream())
 }
 
+function buildcopy() {
+	return src([
+		'{app/js,app/css}/*.min.*',
+		'app/images/**/*',
+		'!app/images/src/**/*',
+		'app/fonts/**/*'
+	], { base: 'app/' })
+	.pipe(dest('dist'))
+}
+
+function buildhtml() {
+	return src(['app/**/*.html', '!app/parts/**/*'])
+		.pipe(buildssi({ root: 'app/' }))
+		.pipe(dest('dist'))
+}
+
+function cleandist() {
+	return del('dist/**/*', { force: true })
+}
+
+function cleanimagesrc() {
+	return del('dist/images/src', { force: true })
+}
+
 function deploy() {
 	return src('app/')
 		.pipe(rsync({
@@ -92,8 +118,9 @@ function startwatch() {
 }
 
 exports.scripts = scripts
-exports.styles = styles
-exports.images = images
-exports.deploy = deploy
-exports.assets = series(styles, scripts, images)
+exports.styles  = styles
+exports.images  = images
+exports.deploy  = deploy
+exports.assets  = series(styles, scripts, images)
+exports.build   = series(cleandist, scripts, styles, images, buildcopy, buildhtml, cleanimagesrc)
 exports.default = series(scripts, images, styles, parallel(browsersync, startwatch))
