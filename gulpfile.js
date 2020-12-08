@@ -3,7 +3,7 @@ let fileswatch = 'html,htm,txt,json,md,woff2' // List of files extensions for wa
 const { src, dest, parallel, series, watch } = require('gulp')
 const browserSync  = require('browser-sync').create()
 const ssi          = require('browsersync-ssi')
-const buildssi     = require('gulp-ssi')
+const buildssi     = require('ssi')
 const webpack      = require('webpack-stream')
 const sass         = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
@@ -77,10 +77,10 @@ function buildcopy() {
 	.pipe(dest('dist'))
 }
 
-function buildhtml() {
-	return src(['app/**/*.html', '!app/parts/**/*'])
-		.pipe(buildssi({ root: 'app/' }))
-		.pipe(dest('dist'))
+async function buildhtml() {
+	let includes = new buildssi('app/', 'dist/', '/**/*.html')
+	includes.compile()
+	del('dist/parts', { force: true })
 }
 
 function cleandist() {
