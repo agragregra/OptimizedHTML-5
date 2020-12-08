@@ -47,6 +47,19 @@
 
 <pre>&lt;!--#include virtual="parts/header.html" --&gt;</pre>
 
+<p>Variables? No problem:</p>
+
+<pre>
+&lt;!--#set var="title" value="OptimizedHTML 5" --&gt;
+&lt;!--#include virtual="/parts/header.html" --&gt;
+</pre>
+
+<p>In "parts/header.html":</p>
+
+<pre>
+&lt;title&gt;&lt;!--#echo var="title" --&gt;&lt;/title&gt;
+</pre>
+
 <h2>Included features</h2>
 
 <ol>
