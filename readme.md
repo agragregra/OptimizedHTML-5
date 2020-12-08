@@ -45,7 +45,7 @@
 
 <p>Include parts of html code is implemented using SSI Browsersync server side. You can import any part of the code using construction in any of html files:</p>
 
-<pre>&lt;!--#include virtual="parts/header.html" --&gt;</pre>
+<pre>&lt;!--#include virtual="/parts/header.html" --&gt;</pre>
 
 <p>Variables? No problem:</p>
 
@@ -54,7 +54,7 @@
 &lt;!--#include virtual="/parts/header.html" --&gt;
 </pre>
 
-<p>In "parts/header.html":</p>
+<p>In "/parts/header.html":</p>
 
 <pre>
 &lt;title&gt;&lt;!--#echo var="title" --&gt;&lt;/title&gt;
