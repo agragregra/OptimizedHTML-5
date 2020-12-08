@@ -2,8 +2,8 @@ let fileswatch = 'html,htm,txt,json,md,woff2' // List of files extensions for wa
 
 const { src, dest, parallel, series, watch } = require('gulp')
 const browserSync  = require('browser-sync').create()
-const ssi          = require('browsersync-ssi')
-const buildssi     = require('ssi')
+const bssi         = require('browsersync-ssi')
+const ssi          = require('ssi')
 const webpack      = require('webpack-stream')
 const sass         = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
@@ -17,7 +17,7 @@ function browsersync() {
 	browserSync.init({
 		server: {
 			baseDir: 'app/',
-			middleware: ssi({ baseDir: 'app/', ext: '.html' })
+			middleware: bssi({ baseDir: 'app/', ext: '.html' })
 		},
 		tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
 		notify: false,
@@ -78,7 +78,7 @@ function buildcopy() {
 }
 
 async function buildhtml() {
-	let includes = new buildssi('app/', 'dist/', '/**/*.html')
+	let includes = new ssi('app/', 'dist/', '/**/*.html')
 	includes.compile()
 	del('dist/parts', { force: true })
 }
