@@ -1,4 +1,4 @@
-let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Sass|Scss syntax.
+let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Scss syntax.
 		fileswatch   = 'html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
 
 const { src, dest, parallel, series, watch } = require('gulp')
