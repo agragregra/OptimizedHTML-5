@@ -1,4 +1,5 @@
-let fileswatch = 'html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
+let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Sass|Scss syntax.
+		fileswatch   = 'html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
 
 const { src, dest, parallel, series, watch } = require('gulp')
 const browserSync  = require('browser-sync').create()
@@ -6,6 +7,12 @@ const bssi         = require('browsersync-ssi')
 const ssi          = require('ssi')
 const webpack      = require('webpack-stream')
 const sass         = require('gulp-sass')
+const sassglob     = require('gulp-sass-glob')
+const less         = require('gulp-less')
+const lessglob     = require('gulp-less-glob')
+const styl         = require('gulp-stylus')
+const stylglob     = require("gulp-empty")
+const cleancss     = require('gulp-clean-css')
 const autoprefixer = require('gulp-autoprefixer')
 const rename       = require('gulp-rename')
 const imagemin     = require('gulp-imagemin')
@@ -19,7 +26,7 @@ function browsersync() {
 			baseDir: 'app/',
 			middleware: bssi({ baseDir: 'app/', ext: '.html' })
 		},
-		tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
+		// tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
 		notify: false,
 		online: true
 	})
@@ -51,9 +58,11 @@ function scripts() {
 }
 
 function styles() {
-	return src('app/sass/main.sass')
-		.pipe(sass({ outputStyle: 'compressed' }))
+	return src(`app/styles/${preprocessor}/main.*`)
+		.pipe(eval(preprocessor + 'glob')())
+		.pipe(eval(preprocessor)())
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+		.pipe(cleancss({ level: { 1: { specialComments: 0 } },/* format: 'beautify' */ }))
 		.pipe(rename('app.min.css'))
 		.pipe(dest('app/css'))
 		.pipe(browserSync.stream())
@@ -103,7 +112,7 @@ function deploy() {
 }
 
 function startwatch() {
-	watch('app/sass/**/*', { usePolling: true }, styles)
+	watch('app/styles/**/*', { usePolling: true }, styles)
 	watch(['app/js/**/*.js', '!app/js/**/*.min.js'], { usePolling: true }, scripts)
 	watch('app/images/src/**/*.{jpg,jpeg,png,webp,svg,gif}', { usePolling: true }, images)
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
