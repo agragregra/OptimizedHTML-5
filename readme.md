@@ -5,7 +5,7 @@
 	<img src="https://raw.githubusercontent.com/agragregra/oh5/master/app/images/dist/preview.jpg" alt="Start HTML Template">
 </p>
 
-<p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp 4</strong>, <strong>Sass</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot). It uses best practices for responsive images, JavaScript, CSS optimizing and contains a <strong>.htaccess</strong> code for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
+<p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp 4</strong>, <strong>Preprocessors (Sass, Scss, Less, Stylus)</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot), Server-side HTML imports (SSI), build. It uses best practices for responsive images, JavaScript, CSS optimizing and contains a <strong>.htaccess</strong> code for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
 
 <h2>How to use OptimizedHTML 5</h2>
 
@@ -18,6 +18,13 @@
 	<li>Install Node Modules: <strong>npm i</strong></li>
 	<li>Run: <strong>gulp</strong></li>
 </ol>
+
+<h2>Main Gulpfile.js options:</h2>
+
+<ul>
+	<li><strong>preprocessor</strong>: Optional preprocessor (sass, less, styl). 'sass' also work with the Scss syntax in "blocks/" folder</li>
+	<li><strong>fileswatch</strong>: List of files extensions for watching & hard reload</li>
+</ul>
 
 <h2>Main Gulp tasks:</h2>
 
@@ -34,11 +41,11 @@
 
 <ol>
 	<li>All <strong>src | dist scripts</strong> located in <strong>app/js/app.js | app.min.js</strong></li>
-	<li><strong>Main Sass</strong> src file located in <strong>app/sass/main.sass</strong></li>
+	<li><strong>Main Sass|Scss|Less|Styl</strong> src files located in <strong>app/styles/{preprocessor}/main.*</strong></li>
 	<li>All <strong>compressed styles</strong> located in <strong>app/css/main.min.css</strong></li>
-	<li>Project <strong>styles config</strong> placed in <strong>app/sass/_config.sass</strong></li>
-	<li>All <strong>src images</strong> placed in <strong>app/images/src/</strong> folder.</li>
-	<li>All <strong>compressed images</strong> placed in <strong>app/images/dist/</strong> folder.</li>
+	<li>Project <strong>styles config</strong> placed in <strong>app/styles/{preprocessor}/_config.*</strong></li>
+	<li>All <strong>src images</strong> placed in <strong>app/images/src/</strong> folder</li>
+	<li>All <strong>compressed images</strong> placed in <strong>app/images/dist/</strong> folder</li>
 </ol>
 
 <h4>Include parts of HTML code:</h4>
