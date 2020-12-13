@@ -22,7 +22,7 @@
 <h2>Main Gulpfile.js options:</h2>
 
 <ul>
-	<li><strong>preprocessor</strong>: Optional preprocessor (sass, less, styl). 'sass' also work with the Scss syntax in "styles/sass/blocks/" folder</li>
+	<li><strong>preprocessor</strong>: Optional preprocessor (sass, less, styl). 'sass' also work with the Scss syntax in "styles/sass/blocks/" import folder</li>
 	<li><strong>fileswatch</strong>: List of files extensions for watching & hard reload</li>
 </ul>
 
