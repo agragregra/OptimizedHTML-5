@@ -33,7 +33,7 @@ function browsersync() {
 }
 
 function scripts() {
-	return src('app/js/app.js')
+	return src(['app/js/*.js', '!app/js/*.min.js'])
 		.pipe(webpack({
 			mode: 'production',
 			module: {
@@ -48,11 +48,13 @@ function scripts() {
 						}
 					}
 				]
+			},
+			output: {
+				filename: 'app.min.js'
 			}
 		})).on('error', function handleError() {
 			this.emit('end')
 		})
-		.pipe(rename('app.min.js'))
 		.pipe(dest('app/js'))
 		.pipe(browserSync.stream())
 }
