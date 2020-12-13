@@ -41,7 +41,7 @@
 
 <ol>
 	<li>All <strong>src | dist scripts</strong> located in <strong>app/js/app.js | app.min.js</strong></li>
-	<li><strong>Main Sass|Scss|Less|Styl</strong> src files located in <strong>app/styles/{preprocessor}/main.*</strong></li>
+	<li><strong>Main Sass|Less|Styl</strong> src files located in <strong>app/styles/{preprocessor}/main.*</strong></li>
 	<li>All <strong>compressed styles</strong> located in <strong>app/css/main.min.css</strong></li>
 	<li>Project <strong>styles config</strong> placed in <strong>app/styles/{preprocessor}/_config.*</strong></li>
 	<li>All <strong>src images</strong> placed in <strong>app/images/src/</strong> folder</li>
