@@ -5,7 +5,7 @@
 	<img src="https://raw.githubusercontent.com/agragregra/oh5/master/app/images/dist/preview.jpg" alt="Start HTML Template">
 </p>
 
-<p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp 4</strong>, <strong>Preprocessors (Sass, Scss, Less, Stylus)</strong>, <strong>clean-css</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot), Server-side HTML imports (SSI), build. It uses best practices for responsive images, JavaScript, CSS optimizing and contains a <strong>.htaccess</strong> code for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
+<p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp 4</strong>, <strong>Preprocessors (Sass, Scss, Less, Stylus)</strong>, <strong>clean-css</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot), Server-side <strong>HTML imports</strong> (SSI), <strong>build</strong>. It uses best practices for responsive images, JavaScript, CSS optimizing and contains a <strong>.htaccess</strong> code for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
 
 <h2>How to use OptimizedHTML 5</h2>
 
