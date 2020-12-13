@@ -1,4 +1,4 @@
-let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Scss syntax.
+let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Scss syntax in blocks/ folder.
 		fileswatch   = 'html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
 
 const { src, dest, parallel, series, watch } = require('gulp')
@@ -59,7 +59,7 @@ function scripts() {
 
 function styles() {
 	return src([`app/styles/${preprocessor}/*.*`, `!app/styles/${preprocessor}/_*.*`])
-		.pipe(eval(preprocessor + 'glob')())
+		.pipe(eval(`${preprocessor}glob`)())
 		.pipe(eval(preprocessor)())
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 		.pipe(cleancss({ level: { 1: { specialComments: 0 } },/* format: 'beautify' */ }))
