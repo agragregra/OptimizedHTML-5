@@ -58,12 +58,12 @@ function scripts() {
 }
 
 function styles() {
-	return src(`app/styles/${preprocessor}/main.*`)
+	return src([`app/styles/${preprocessor}/*.*`, `!app/styles/${preprocessor}/_*.*`])
 		.pipe(eval(preprocessor + 'glob')())
 		.pipe(eval(preprocessor)())
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 		.pipe(cleancss({ level: { 1: { specialComments: 0 } },/* format: 'beautify' */ }))
-		.pipe(rename('app.min.css'))
+		.pipe(rename({ suffix: ".min" }))
 		.pipe(dest('app/css'))
 		.pipe(browserSync.stream())
 }
