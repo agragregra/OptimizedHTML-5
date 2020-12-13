@@ -67,6 +67,10 @@
 &lt;title&gt;&lt;!--#echo var="title" --&gt;&lt;/title&gt;
 </pre>
 
+<h4>Include parts of CSS Preprocessor code:</h4>
+
+<p>All included parts of preprocessor files placed in the folder "styles/{preprocessor}/blocks/". Any number of preprocessor files can be placed here and in any order. They will be automatically included in the main.* File and processed by the selected preprocessor.</p>
+
 <h2>Included features</h2>
 
 <ol>
