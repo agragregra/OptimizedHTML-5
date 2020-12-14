@@ -48,13 +48,11 @@ function scripts() {
 						}
 					}
 				]
-			},
-			output: {
-				filename: 'app.min.js'
 			}
 		})).on('error', function handleError() {
 			this.emit('end')
 		})
+		.pipe(rename('app.min.js'))
 		.pipe(dest('app/js'))
 		.pipe(browserSync.stream())
 }
