@@ -25,8 +25,7 @@ $gutter: $grid-gutter-width
 		font-family: $fname
 		font-style: $fstyle
 		font-weight: $fweight
-		src: local($fname), url($furl) format('woff2')
-		// font-display: swap // Uncomment to initially display system fonts
+		src: url($furl) format('woff2')
 
 @include font('roboto-oh5', normal, 400, '../fonts/roboto-regular-webfont.woff2')
 @include font('roboto-oh5', italic, 400, '../fonts/roboto-italic-webfont.woff2')
