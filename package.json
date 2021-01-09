@@ -7,9 +7,9 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@babel/core": "^7.12.10",
-		"@babel/preset-env": "^7.12.10",
+		"@babel/preset-env": "^7.12.11",
 		"babel-loader": "^8.2.2",
-		"babel-plugin-module-resolver": "^4.0.0",
+		"babel-plugin-module-resolver": "^4.1.0",
 		"babel-plugin-root-import": "^6.6.0",
 		"bootstrap": "^4.5.3",
 		"browser-sync": "^2.26.13",
