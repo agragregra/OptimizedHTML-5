@@ -26,10 +26,10 @@ function browsersync() {
 			baseDir: 'app/',
 			middleware: bssi({ baseDir: 'app/', ext: '.html' })
 		},
-		// tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
+		ghostMode: { clicks: false },
 		notify: false,
 		online: true,
-		ghostMode: { clicks: false }
+		// tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
 	})
 }
 
