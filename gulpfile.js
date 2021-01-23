@@ -109,7 +109,8 @@ function deploy() {
 			recursive: true,
 			archive: true,
 			silent: false,
-			compress: true
+			compress: true,
+			// clean: true, // Mirror copy with file deletion
 		}))
 }
 
