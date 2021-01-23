@@ -1,6 +1,8 @@
-// import $ from 'jquery'; window.jQuery = $; window.$ = $ // import jQuery module (npm i jquery)
+// import jQuery module (npm i jquery):
+// import $ from 'jquery'; window.jQuery = $; window.$ = $
 
-// require('~/app/libs/mmenu/dist/mmenu.js') // import vendor jQuery plugin example (not module)
+// import vendor jQuery plugin example (not module):
+// require('~/app/libs/mmenu/dist/mmenu.js')
 
 document.addEventListener('DOMContentLoaded', () => {
 
