@@ -37,6 +37,7 @@ function scripts() {
 	return src(['app/js/*.js', '!app/js/*.min.js'])
 		.pipe(webpack({
 			mode: 'production',
+			performance: { hints: false },
 			module: {
 				rules: [
 					{
