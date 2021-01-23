@@ -104,13 +104,13 @@ function deploy() {
 			root: 'dist/',
 			hostname: 'username@yousite.com',
 			destination: 'yousite/public_html/',
+			// clean: true, // Mirror copy with file deletion
 			include: [/* '*.htaccess' */], // Included files to deploy,
 			exclude: [ '**/Thumbs.db', '**/*.DS_Store' ],
 			recursive: true,
 			archive: true,
 			silent: false,
-			compress: true,
-			// clean: true, // Mirror copy with file deletion
+			compress: true
 		}))
 }
 
