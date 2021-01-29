@@ -12,7 +12,7 @@
 		"babel-plugin-module-resolver": "^4.1.0",
 		"babel-plugin-root-import": "^6.6.0",
 		"bootstrap": "^4.6.0",
-		"browser-sync": "^2.26.13",
+		"browser-sync": "^2.26.14",
 		"browsersync-ssi": "^0.2.4",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
@@ -28,6 +28,6 @@
 		"gulp-sass": "^4.1.0",
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^2.7.0",
-		"webpack-stream": "^6.1.1"
+		"webpack-stream": "^6.1.2"
 	}
 }
