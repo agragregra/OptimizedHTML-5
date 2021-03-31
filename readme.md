@@ -100,7 +100,7 @@ Or get from google-webfonts-helper: <a href="https://google-webfonts-helper.hero
 	<li><strong>600</strong> - Semibold or Demibold</li>
 	<li><strong>700</strong> - Bold</li>
 	<li><strong>800</strong> - Black or Extra Bold or Heavy</li>
-	<li><strong>900</strong> - Extra Black or Fat or Ultra Blac</li>
+	<li><strong>900</strong> - Extra Black or Fat or Ultra Blac or Heavy</li>
 </ul>
 
 <h2>Caching</h2>
