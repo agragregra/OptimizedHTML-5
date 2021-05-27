@@ -10,12 +10,12 @@
 		"build": "gulp build"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.14.0",
-		"@babel/preset-env": "^7.14.1",
+		"@babel/core": "^7.14.3",
+		"@babel/preset-env": "^7.14.2",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-module-resolver": "^4.1.0",
 		"babel-plugin-root-import": "^6.6.0",
-		"bootstrap": "^4.6.0",
+		"bootstrap": "^5.0.1",
 		"browser-sync": "^2.26.14",
 		"browsersync-ssi": "^0.2.4",
 		"del": "^6.0.0",
