@@ -10,8 +10,8 @@
 		"build": "gulp build"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.14.3",
-		"@babel/preset-env": "^7.14.2",
+		"@babel/core": "^7.14.6",
+		"@babel/preset-env": "^7.14.5",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-module-resolver": "^4.1.0",
 		"babel-plugin-root-import": "^6.6.0",
@@ -20,10 +20,10 @@
 		"browsersync-ssi": "^0.2.4",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "^7.0.1",
+		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-imagemin": "^7.1.0",
-		"gulp-less": "^4.0.1",
+		"gulp-less": "^5.0.0",
 		"gulp-less-glob": "^1.0.0",
 		"gulp-newer": "^1.4.0",
 		"gulp-noop": "^1.0.1",
