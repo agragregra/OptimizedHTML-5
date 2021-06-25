@@ -11,12 +11,12 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.14.6",
-		"@babel/preset-env": "^7.14.5",
+		"@babel/preset-env": "^7.14.7",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-module-resolver": "^4.1.0",
 		"babel-plugin-root-import": "^6.6.0",
-		"bootstrap": "^5.0.1",
-		"browser-sync": "^2.26.14",
+		"bootstrap": "^5.0.2",
+		"browser-sync": "^2.27.1",
 		"browsersync-ssi": "^0.2.4",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
@@ -29,9 +29,10 @@
 		"gulp-noop": "^1.0.1",
 		"gulp-rename": "^2.0.0",
 		"gulp-rsync": "0.0.9",
-		"gulp-sass": "^4.1.0",
+		"gulp-sass": "^5.0.0",
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^2.7.0",
+		"sass": "^1.35.1",
 		"webpack-stream": "^6.1.2"
 	}
 }
