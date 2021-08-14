@@ -10,13 +10,13 @@
 		"build": "gulp build"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.14.8",
-		"@babel/preset-env": "^7.14.8",
+		"@babel/core": "^7.15.0",
+		"@babel/preset-env": "^7.15.0",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-module-resolver": "^4.1.0",
 		"babel-plugin-root-import": "^6.6.0",
-		"bootstrap": "^5.0.2",
-		"browser-sync": "^2.27.4",
+		"bootstrap": "^5.1.0",
+		"browser-sync": "^2.27.5",
 		"browsersync-ssi": "^0.2.4",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
@@ -32,7 +32,7 @@
 		"gulp-sass": "^5.0.0",
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^2.7.0",
-		"sass": "^1.36.0",
+		"sass": "^1.37.5",
 		"webpack-stream": "^6.1.2"
 	}
 }
