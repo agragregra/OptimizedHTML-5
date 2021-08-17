@@ -129,11 +129,10 @@ function startwatch() {
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
-exports.scripts   = scripts
-exports.styles    = styles
-exports.images    = images
-exports.deploy    = deploy
-exports.cleandist = cleandist
-exports.assets    = series(scripts, styles, images)
-exports.build     = series(cleandist, images, scripts, styles, buildcopy, buildhtml)
-exports.default   = series(scripts, styles, images, parallel(browsersync, startwatch))
+exports.scripts = scripts
+exports.styles  = styles
+exports.images  = images
+exports.deploy  = deploy
+exports.assets  = series(scripts, styles, images)
+exports.build   = series(cleandist, images, scripts, styles, buildcopy, buildhtml)
+exports.default = series(scripts, styles, images, parallel(browsersync, startwatch))
