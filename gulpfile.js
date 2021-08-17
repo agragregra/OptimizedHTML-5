@@ -75,7 +75,7 @@ async function images() {
 		"app/images/dist/",
 		{ compress_force: false, statistic: true, autoupdate: true }, false,
 		{ jpg: { engine: "mozjpeg", command: ["-quality", "75"] } },
-		{ png: { engine: "pngquant", command: ["--quality=75", "-o"] } },
+		{ png: { engine: "pngquant", command: ["--quality=75-100", "-o"] } },
 		{ svg: { engine: "svgo", command: "--multipass" } },
 		{ gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] } },
 		function (err, completed) {
