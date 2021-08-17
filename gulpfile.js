@@ -15,8 +15,7 @@ const stylglob     = require("gulp-noop")
 const cleancss     = require('gulp-clean-css')
 const autoprefixer = require('gulp-autoprefixer')
 const rename       = require('gulp-rename')
-const imagemin     = require('gulp-imagemin')
-const newer        = require('gulp-newer')
+const imagecomp    = require("compress-images")
 const rsync        = require('gulp-rsync')
 const del          = require('del')
 
@@ -70,12 +69,21 @@ function styles() {
 		.pipe(browserSync.stream())
 }
 
-function images() {
-	return src(['app/images/src/**/*'])
-		.pipe(newer('app/images/dist'))
-		.pipe(imagemin())
-		.pipe(dest('app/images/dist'))
-		.pipe(browserSync.stream())
+async function images() {
+	imagecomp(
+		"app/images/src/**/*",
+		"app/images/dist/",
+		{ compress_force: false, statistic: true, autoupdate: true }, false,
+		{ jpg: { engine: "mozjpeg", command: ["-quality", "75"] } },
+		{ png: { engine: "pngquant", command: ["--quality=75", "-o"] } },
+		{ svg: { engine: "svgo", command: "--multipass" } },
+		{ gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] } },
+		function (err, completed) {
+			if (completed === true) {
+				browserSync.reload()
+			}
+		}
+	)
 }
 
 function buildcopy() {
@@ -94,8 +102,8 @@ async function buildhtml() {
 	del('dist/parts', { force: true })
 }
 
-function cleandist() {
-	return del('dist/**/*', { force: true })
+async function cleandist() {
+	del('dist/**/*', { force: true })
 }
 
 function deploy() {
@@ -117,14 +125,15 @@ function deploy() {
 function startwatch() {
 	watch(`app/styles/${preprocessor}/**/*`, { usePolling: true }, styles)
 	watch(['app/js/**/*.js', '!app/js/**/*.min.js'], { usePolling: true }, scripts)
-	watch('app/images/src/**/*.{jpg,jpeg,png,webp,svg,gif}', { usePolling: true }, images)
+	watch('app/images/src/**/*', { usePolling: true }, images)
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
-exports.scripts = scripts
-exports.styles  = styles
-exports.images  = images
-exports.deploy  = deploy
-exports.assets  = series(scripts, styles, images)
-exports.build   = series(cleandist, scripts, styles, images, buildcopy, buildhtml)
-exports.default = series(scripts, styles, images, parallel(browsersync, startwatch))
+exports.scripts   = scripts
+exports.styles    = styles
+exports.images    = images
+exports.deploy    = deploy
+exports.cleandist = cleandist
+exports.assets    = series(scripts, styles, images)
+exports.build     = series(cleandist, images, scripts, styles, buildcopy, buildhtml)
+exports.default   = series(scripts, styles, images, parallel(browsersync, startwatch))
