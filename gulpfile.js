@@ -128,7 +128,7 @@ function startwatch() {
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
-export { scripts, styles, images, deploy, browsersync, startwatch }
+export { scripts, styles, images, deploy }
 export let assets = series(scripts, styles, images)
 export let build = series(cleandist, images, scripts, styles, buildcopy, buildhtml)
 export default series(scripts, styles, images, parallel(browsersync, startwatch))
