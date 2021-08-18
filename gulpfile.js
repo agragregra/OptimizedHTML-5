@@ -72,7 +72,7 @@ function styles() {
 			autoprefixer({ grid: 'autoplace' }),
 			cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
 		]))
-		.pipe(rename({ suffix: ".min" }))
+		.pipe(rename({ suffix: '.min' }))
 		.pipe(dest('app/css'))
 		.pipe(browserSync.stream())
 }
