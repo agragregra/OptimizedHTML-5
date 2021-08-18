@@ -68,7 +68,10 @@ function styles() {
 	return src([`app/styles/${preprocessor}/*.*`, `!app/styles/${preprocessor}/_*.*`])
 		.pipe(eval(`${preprocessor}glob`)())
 		.pipe(eval(preprocessor)())
-		.pipe(postCss([ autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: 'autoplace' }), cssnano() ]))
+		.pipe(postCss([
+			autoprefixer({ grid: 'autoplace' }),
+			cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
+		]))
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(dest('app/css'))
 		.pipe(browserSync.stream())

@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"author": "WebDesign Master",
 	"type": "module",
+	"browserslist": [ "last 10 versions" ],
 	"license": "ISC",
 	"scripts": {
 		"start": "gulp",
