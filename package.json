@@ -16,7 +16,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.15.0",
 		"@babel/preset-env": "^7.15.0",
-		"autoprefixer": "^10.3.1",
+		"autoprefixer": "^10.3.2",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-module-resolver": "^4.1.0",
 		"babel-plugin-root-import": "^6.6.0",
