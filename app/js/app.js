@@ -1,3 +1,5 @@
+// // For JavaScript webpack mode:
+
 // // Import jQuery module (npm i jquery)
 // import $ from 'jquery'
 // window.jQuery = $

@@ -1,5 +1,6 @@
 let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Scss syntax in blocks/ folder.
-		fileswatch   = 'html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
+		fileswatch   = 'html,htm,txt,json,md,woff2', // List of files extensions for watching & hard reload
+		mode         = 'webpack' // JavaScript modes: 'webpack' or 'uglify'
 
 import pkg from 'gulp'
 const { gulp, src, dest, parallel, series, watch } = pkg
@@ -8,6 +9,9 @@ import browserSync  from 'browser-sync'
 import bssi         from 'browsersync-ssi'
 import ssi          from 'ssi'
 import webpack      from 'webpack-stream'
+import uglifyEs     from 'gulp-uglify-es'
+const uglify        = uglifyEs.default
+import concat       from 'gulp-concat'
 import gulpSass     from 'gulp-sass'
 import dartSass     from 'sass'
 import sassglob     from 'gulp-sass-glob'
@@ -25,20 +29,20 @@ import rename       from 'gulp-rename'
 import rsync        from 'gulp-rsync'
 import del          from 'del'
 
-function browsersync() {
-	browserSync.init({
-		server: {
-			baseDir: 'app/',
-			middleware: bssi({ baseDir: 'app/', ext: '.html' })
-		},
-		ghostMode: { clicks: false },
-		notify: false,
-		online: true,
-		// tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
-	})
+// For JavaScript Uglify mode
+async function scripts_uglify() {
+	return src([
+		'app/libs/jquery/dist/jquery.min.js', // sudo npm i -g bower; bower i jquery
+		'app/js/app.js', // Always at the end
+		])
+	.pipe(concat('app.min.js'))
+	.pipe(uglify({ output: { comments: false } }))
+	.pipe(dest('app/js'))
+	.pipe(browserSync.stream())
 }
 
-function scripts() {
+// For JavaScript Webpack mode
+function scripts_webpack() {
 	return src(['app/js/*.js', '!app/js/*.min.js'])
 		.pipe(webpack({
 			mode: 'production',
@@ -105,6 +109,19 @@ async function cleandist() {
 	del('dist/**/*', { force: true })
 }
 
+function browsersync() {
+	browserSync.init({
+		server: {
+			baseDir: 'app/',
+			middleware: bssi({ baseDir: 'app/', ext: '.html' })
+		},
+		ghostMode: { clicks: false },
+		notify: false,
+		online: true,
+		// tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
+	})
+}
+
 function deploy() {
 	return src('dist/')
 		.pipe(rsync({
@@ -127,6 +144,8 @@ function startwatch() {
 	watch('app/images/src/**/*', { usePolling: true }, images)
 	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
+
+let scripts = eval(`scripts_${mode}`)
 
 export { scripts, styles, images, deploy }
 export let assets = series(scripts, styles, images)

@@ -27,6 +27,7 @@
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-changed": "^4.0.3",
+		"gulp-concat": "^2.6.1",
 		"gulp-imagemin": "^8.0.0",
 		"gulp-less": "^5.0.0",
 		"gulp-less-glob": "^1.0.0",
@@ -37,6 +38,7 @@
 		"gulp-sass": "^5.0.0",
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^2.7.0",
+		"gulp-uglify-es": "^3.0.0",
 		"postcss": "^8.3.6",
 		"sass": "^1.38.0",
 		"webpack-stream": "^6.1.2"
