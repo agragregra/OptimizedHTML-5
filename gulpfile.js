@@ -1,6 +1,6 @@
 let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Scss syntax in blocks/ folder.
 		fileswatch   = 'html,htm,txt,json,md,woff2', // List of files extensions for watching & hard reload
-		mode         = 'webpack' // JavaScript modes: 'webpack' or 'uglify'
+		mode         = 'webpack' // JavaScript modes: 'webpack' or 'concat'
 
 import pkg from 'gulp'
 const { gulp, src, dest, parallel, series, watch } = pkg
@@ -10,12 +10,12 @@ import bssi         from 'browsersync-ssi'
 import ssi          from 'ssi'
 import webpack      from 'webpack-stream'
 import uglifyEs     from 'gulp-uglify-es'
-const uglify        = uglifyEs.default
+const  uglify       = uglifyEs.default
 import concat       from 'gulp-concat'
 import gulpSass     from 'gulp-sass'
 import dartSass     from 'sass'
 import sassglob     from 'gulp-sass-glob'
-const sass          = gulpSass(dartSass)
+const  sass         = gulpSass(dartSass)
 import less         from 'gulp-less'
 import lessglob     from 'gulp-less-glob'
 import styl         from 'gulp-stylus'
@@ -29,8 +29,8 @@ import rename       from 'gulp-rename'
 import rsync        from 'gulp-rsync'
 import del          from 'del'
 
-// For JavaScript Uglify mode
-async function scripts_uglify() {
+// For JavaScript Concat mode
+async function scripts_concat() {
 	return src([
 		'app/libs/jquery/dist/jquery.min.js', // sudo npm i -g bower; bower i jquery
 		'app/js/app.js', // Always at the end
