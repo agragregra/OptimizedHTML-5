@@ -30,7 +30,7 @@ import rsync        from 'gulp-rsync'
 import del          from 'del'
 
 // For JavaScript Concat mode
-async function scripts_concat() {
+function scripts_concat() {
 	return src([
 		'app/libs/jquery/dist/jquery.min.js', // sudo npm i -g bower; bower i jquery
 		'app/js/app.js', // Always at the end

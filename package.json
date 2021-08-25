@@ -40,7 +40,7 @@
 		"gulp-stylus": "^2.7.0",
 		"gulp-uglify-es": "^3.0.0",
 		"postcss": "^8.3.6",
-		"sass": "^1.38.0",
+		"sass": "^1.38.1",
 		"webpack-stream": "^6.1.2"
 	}
 }
