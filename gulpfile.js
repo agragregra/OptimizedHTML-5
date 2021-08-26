@@ -4,26 +4,28 @@ let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work 
 import pkg from 'gulp'
 const { gulp, src, dest, parallel, series, watch } = pkg
 
-import browserSync  from 'browser-sync'
-import bssi         from 'browsersync-ssi'
-import ssi          from 'ssi'
-import webpack      from 'webpack-stream'
-import gulpSass     from 'gulp-sass'
-import dartSass     from 'sass'
-import sassglob     from 'gulp-sass-glob'
-const  sass         = gulpSass(dartSass)
-import less         from 'gulp-less'
-import lessglob     from 'gulp-less-glob'
-import styl         from 'gulp-stylus'
-import stylglob     from 'gulp-noop'
-import postCss      from 'gulp-postcss'
-import cssnano      from 'cssnano'
-import autoprefixer from 'autoprefixer'
-import imagemin     from 'gulp-imagemin'
-import changed      from 'gulp-changed'
-import rename       from 'gulp-rename'
-import rsync        from 'gulp-rsync'
-import del          from 'del'
+import browserSync   from 'browser-sync'
+import bssi          from 'browsersync-ssi'
+import ssi           from 'ssi'
+import webpackStream from 'webpack-stream'
+import webpack       from 'webpack'
+import TerserPlugin  from'terser-webpack-plugin'
+import gulpSass      from 'gulp-sass'
+import dartSass      from 'sass'
+import sassglob      from 'gulp-sass-glob'
+const  sass          = gulpSass(dartSass)
+import less          from 'gulp-less'
+import lessglob      from 'gulp-less-glob'
+import styl          from 'gulp-stylus'
+import stylglob      from 'gulp-noop'
+import postCss       from 'gulp-postcss'
+import cssnano       from 'cssnano'
+import autoprefixer  from 'autoprefixer'
+import imagemin      from 'gulp-imagemin'
+import changed       from 'gulp-changed'
+import concat        from 'gulp-concat'
+import rsync         from 'gulp-rsync'
+import del           from 'del'
 
 function browsersync() {
 	browserSync.init({
@@ -40,26 +42,40 @@ function browsersync() {
 
 function scripts() {
 	return src(['app/js/*.js', '!app/js/*.min.js'])
-		.pipe(webpack({
+		.pipe(webpackStream({
 			mode: 'production',
 			performance: { hints: false },
+			plugins: [
+				new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' }), // jQuery (npm i jquery)
+			],
 			module: {
 				rules: [
 					{
-						test: /\.(js)$/,
+						test: /\.m?js$/,
 						exclude: /(node_modules)/,
-						loader: 'babel-loader',
-						query: {
-							presets: ['@babel/env'],
-							plugins: ['babel-plugin-root-import']
+						use: {
+							loader: 'babel-loader',
+							options: {
+								presets: ['@babel/preset-env'],
+								plugins: ['babel-plugin-root-import']
+							}
 						}
 					}
 				]
-			}
-		})).on('error', function handleError() {
+			},
+			optimization: {
+				minimize: true,
+				minimizer: [
+					new TerserPlugin({
+						terserOptions: { format: { comments: false } },
+						extractComments: false
+					})
+				]
+			},
+		}, webpack)).on('error', function handleError() {
 			this.emit('end')
 		})
-		.pipe(rename('app.min.js'))
+		.pipe(concat('app.min.js'))
 		.pipe(dest('app/js'))
 		.pipe(browserSync.stream())
 }
@@ -72,7 +88,7 @@ function styles() {
 			autoprefixer({ grid: 'autoplace' }),
 			cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
 		]))
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(concat('app.min.css'))
 		.pipe(dest('app/css'))
 		.pipe(browserSync.stream())
 }
