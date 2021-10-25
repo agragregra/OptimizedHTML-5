@@ -11,7 +11,7 @@
 
 <p>Clone into the current folder and remove all unnecessary (one command):</p>
 
-<pre>git clone https://github.com/agragregra/oh5 .; rm -rf trunk .gitignore readme.md .git dist</pre>
+<pre>git clone https://github.com/agragregra/oh5 .; rm -rf trunk .gitignore readme.md .git dist .editorconfig</pre>
 
 <ol>
 	<li>Clone or <a href="https://github.com/agragregra/OptimizedHTML-5/archive/master.zip">Download</a> <strong>OptimizedHTML 5</strong> from GitHub</li>
