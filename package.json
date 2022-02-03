@@ -5,14 +5,9 @@
 	"main": "index.js",
 	"author": "WebDesign Master",
 	"type": "module",
-	"browserslist": [
-		"last 10 versions"
-	],
+	"browserslist": [ "last 10 versions" ],
 	"license": "ISC",
-	"scripts": {
-		"start": "gulp",
-		"build": "gulp build"
-	},
+	"scripts": { "start": "gulp" },
 	"devDependencies": {
 		"@babel/core": "^7.16.12",
 		"@babel/preset-env": "^7.16.11",
