@@ -25,7 +25,7 @@ import imagemin      from 'gulp-imagemin'
 import changed       from 'gulp-changed'
 import concat        from 'gulp-concat'
 import rsync         from 'gulp-rsync'
-import del           from 'del'
+import {deleteAsync} from 'del'
 
 function browsersync() {
 	browserSync.init({
@@ -114,11 +114,11 @@ function buildcopy() {
 async function buildhtml() {
 	let includes = new ssi('app/', 'dist/', '/**/*.html')
 	includes.compile()
-	del('dist/parts', { force: true })
+	await deleteAsync('dist/parts', { force: true })
 }
 
 async function cleandist() {
-	del('dist/**/*', { force: true })
+	await deleteAsync('dist/**/*', { force: true })
 }
 
 function deploy() {
