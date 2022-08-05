@@ -33,7 +33,7 @@
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^2.7.1",
 		"postcss": "^8.4.14",
-		"sass": "^1.54.1",
+		"sass": "^1.54.3",
 		"terser-webpack-plugin": "^5.3.3",
 		"webpack": "^5.74.0",
 		"webpack-stream": "^7.0.0"
