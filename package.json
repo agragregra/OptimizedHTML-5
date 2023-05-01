@@ -9,8 +9,8 @@
 	"license": "ISC",
 	"scripts": { "start": "gulp" },
 	"devDependencies": {
-		"@babel/core": "^7.21.4",
-		"@babel/preset-env": "^7.21.4",
+		"@babel/core": "^7.21.5",
+		"@babel/preset-env": "^7.21.5",
 		"autoprefixer": "^10.4.14",
 		"babel-loader": "^9.1.2",
 		"babel-plugin-module-resolver": "^5.0.0",
@@ -18,7 +18,7 @@
 		"bootstrap": "^5.2.3",
 		"browser-sync": "^2.29.1",
 		"browsersync-ssi": "^0.2.4",
-		"cssnano": "^6.0.0",
+		"cssnano": "^6.0.1",
 		"del": "^7.0.0",
 		"gulp": "^4.0.2",
 		"gulp-changed": "^4.0.3",
@@ -33,9 +33,9 @@
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^3.0.0",
 		"postcss": "^8.4.23",
-		"sass": "^1.62.0",
+		"sass": "^1.62.1",
 		"terser-webpack-plugin": "^5.3.7",
-		"webpack": "^5.80.0",
+		"webpack": "^5.81.0",
 		"webpack-stream": "^7.0.0"
 	}
 }
