@@ -9,7 +9,7 @@
 	"license": "ISC",
 	"scripts": { "start": "gulp" },
 	"devDependencies": {
-		"@babel/core": "^7.21.5",
+		"@babel/core": "^7.21.8",
 		"@babel/preset-env": "^7.21.5",
 		"autoprefixer": "^10.4.14",
 		"babel-loader": "^9.1.2",
@@ -35,7 +35,7 @@
 		"postcss": "^8.4.23",
 		"sass": "^1.62.1",
 		"terser-webpack-plugin": "^5.3.7",
-		"webpack": "^5.81.0",
+		"webpack": "^5.82.0",
 		"webpack-stream": "^7.0.0"
 	}
 }
