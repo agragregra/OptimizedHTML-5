@@ -2,7 +2,7 @@ let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work 
 		fileswatch   = 'html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
 
 import pkg from 'gulp'
-const { gulp, src, dest, parallel, series, watch } = pkg
+const { src, dest, parallel, series, watch } = pkg
 
 import browserSync   from 'browser-sync'
 import bssi          from 'browsersync-ssi'
@@ -11,7 +11,7 @@ import webpackStream from 'webpack-stream'
 import webpack       from 'webpack'
 import TerserPlugin  from 'terser-webpack-plugin'
 import gulpSass      from 'gulp-sass'
-import dartSass      from 'sass'
+import * as dartSass from 'sass'
 const  sass          = gulpSass(dartSass)
 import sassglob      from 'gulp-sass-glob'
 import less          from 'gulp-less'
@@ -128,8 +128,8 @@ function deploy() {
 			hostname: 'username@yousite.com',
 			destination: 'yousite/public_html/',
 			clean: true, // Mirror copy with file deletion
-			include: [/* '*.htaccess' */], // Included files to deploy,
-			exclude: [ '**/Thumbs.db', '**/*.DS_Store' ],
+			// include: ['*.htaccess'], // Includes files to deploy
+			exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
 			recursive: true,
 			archive: true,
 			silent: false,
@@ -138,10 +138,10 @@ function deploy() {
 }
 
 function startwatch() {
-	watch(`app/styles/${preprocessor}/**/*`, { usePolling: true }, styles)
+	watch([`app/styles/${preprocessor}/**/*`], { usePolling: true }, styles)
 	watch(['app/js/**/*.js', '!app/js/**/*.min.js'], { usePolling: true }, scripts)
-	watch('app/images/src/**/*', { usePolling: true }, images)
-	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
+	watch(['app/images/src/**/*'], { usePolling: true }, images)
+	watch([`app/**/*.{${fileswatch}}`], { usePolling: true }).on('change', browserSync.reload)
 }
 
 export { scripts, styles, images, deploy }
