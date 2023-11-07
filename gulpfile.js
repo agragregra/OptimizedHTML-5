@@ -72,7 +72,7 @@ function scripts() {
 					})
 				]
 			},
-		}, webpack)).on('error', (err) => {
+		}, webpack)).on('error', function handleError() {
 			this.emit('end')
 		})
 		.pipe(concat('app.min.js'))
