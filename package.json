@@ -5,9 +5,13 @@
 	"main": "index.js",
 	"author": "WebDesign Master",
 	"type": "module",
-	"browserslist": [ "last 10 versions" ],
+	"browserslist": [
+		"last 10 versions"
+	],
 	"license": "ISC",
-	"scripts": { "start": "gulp" },
+	"scripts": {
+		"start": "gulp"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.23.3",
 		"@babel/preset-env": "^7.23.3",
@@ -32,6 +36,7 @@
 		"gulp-sass": "^5.1.0",
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^3.0.1",
+		"gulp-util": "^3.0.8",
 		"postcss": "^8.4.31",
 		"sass": "^1.69.5",
 		"terser-webpack-plugin": "^5.3.9",
