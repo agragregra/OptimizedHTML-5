@@ -94,7 +94,7 @@ function styles() {
 }
 
 function images() {
-	return src(['app/images/src/**/*'])
+	return src(['app/images/src/**/*'], { encoding: false })
 		.pipe(changed('app/images/dist'))
 		.pipe(imagemin())
 		.pipe(dest('app/images/dist'))
@@ -107,7 +107,7 @@ function buildcopy() {
 		'app/images/**/*.*',
 		'!app/images/src/**/*',
 		'app/fonts/**/*'
-	], { base: 'app/' })
+	], { base: 'app/', encoding: false })
 	.pipe(dest('dist'))
 }
 
