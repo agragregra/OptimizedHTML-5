@@ -122,7 +122,7 @@ async function cleandist() {
 }
 
 function deploy() {
-	return src('dist/')
+	return src('dist/', { encoding: false })
 		.pipe(rsync({
 			root: 'dist/',
 			hostname: 'username@yousite.com',
