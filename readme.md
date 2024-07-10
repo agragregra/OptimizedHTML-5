@@ -9,7 +9,7 @@
 
 <h2>How to use OptimizedHTML 5</h2>
 
-<p>Clone into the current folder and remove all unnecessary (one command):</p>
+<p>Clone into the current folder with remove all unnecessary (one command):</p>
 
 <pre>git clone https://github.com/agragregra/oh5 .; rm -rf trunk .gitignore readme.md .git .editorconfig</pre>
 
