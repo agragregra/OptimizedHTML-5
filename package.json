@@ -1,6 +1,6 @@
 {
 	"name": "optimizedhtml",
-	"version": "5.1",
+	"version": "5.1.0",
 	"description": "OptimizedHTML 5 - Lightweight Gulp Starter",
 	"main": "index.js",
 	"author": "WebDesign Master",
