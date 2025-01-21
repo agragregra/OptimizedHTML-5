@@ -83,7 +83,7 @@ function scripts() {
 function styles() {
 	return src([`app/styles/${preprocessor}/*.*`, `!app/styles/${preprocessor}/_*.*`])
 		.pipe(eval(`${preprocessor}glob`)())
-		.pipe(eval(preprocessor)({ 'include css': true }))
+		.pipe(eval(preprocessor)({ 'include css': true, silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import'] }))
 		.pipe(postCss([
 			autoprefixer({ grid: 'autoplace' }),
 			cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
