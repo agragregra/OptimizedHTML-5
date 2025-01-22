@@ -72,9 +72,7 @@ function scripts() {
 					})
 				]
 			},
-		}, webpack)).on('error', function handleError() {
-			this.emit('end')
-		})
+		}, webpack)).on('error', function handleError() { this.emit('end') })
 		.pipe(concat('app.min.js'))
 		.pipe(dest('app/js'))
 		.pipe(browserSync.stream())
@@ -87,7 +85,7 @@ function styles() {
 			'include css': true,
 			silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import'],
 			loadPaths: ['./']
-		}))
+		})).on('error', function handleError() { this.emit('end') })
 		.pipe(postCss([
 			autoprefixer({ grid: 'autoplace' }),
 			cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
