@@ -85,6 +85,7 @@ function styles() {
 		.pipe(eval(`${preprocessor}glob`)())
 		.pipe(eval(preprocessor)({
 			'include css': true,
+			loadPaths: ['./'],
 			silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import']
 		}))
 		.pipe(postCss([
