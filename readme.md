@@ -75,10 +75,9 @@
 <h2>Included features</h2>
 
 <ol>
-	<li><a href="https://getbootstrap.com/docs/5.0/content/reboot/">bootstrap-reboot</a> - Bootstrap Reboot CSS collection</li>
+	<li><a href="https://getbootstrap.com/docs/5.3/content/reboot/">bootstrap-reboot</a> - Bootstrap Reboot CSS collection</li>
 	<li>
-		<a href="https://getbootstrap.com/docs/5.0/layout/breakpoints/">_breakpoints.scss</a> - Bootstrap Breakpoints mixin (available only for sass and scss)</li>
-		<li><a href="https://getbootstrap.com/docs/5.0/layout/grid/">bootstrap-grid</a> (optional) - Bootstrap Grid collection</li>
+		<li><a href="https://getbootstrap.com/docs/5.3/layout/grid/">bootstrap-grid</a> (optional) - Bootstrap Grid collection</li>
 </ol>
 
 <h2>Helpers</h2>
@@ -88,7 +87,6 @@
 <p>The woff2 fonts are currently recommended.</p>
 
 <p>Converter recommended: <a href="https://www.fontsquirrel.com/tools/webfont-generator">https://www.fontsquirrel.com/tools/webfont-generator</a><br>
-Or get from google-webfonts-helper: <a href="https://google-webfonts-helper.herokuapp.com/fonts">https://google-webfonts-helper.herokuapp.com/fonts</a></p>
 
 <h3>font-weight helper</h3>
 
