@@ -10,7 +10,8 @@
 	],
 	"license": "ISC",
 	"scripts": {
-		"start": "gulp"
+		"dev": "gulp",
+		"build": "gulp build"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.26.0",
