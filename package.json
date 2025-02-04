@@ -3,16 +3,16 @@
 	"version": "5.1.0",
 	"description": "OptimizedHTML 5 - Lightweight Gulp Starter",
 	"main": "index.js",
-	"author": "WebDesign Master",
 	"type": "module",
-	"browserslist": [
-		"last 10 versions"
-	],
-	"license": "ISC",
 	"scripts": {
 		"dev": "gulp",
 		"build": "gulp build"
 	},
+	"browserslist": [
+		"last 10 versions"
+	],
+	"author": "WebDesign Master",
+	"license": "ISC",
 	"devDependencies": {
 		"@babel/core": "^7.26.7",
 		"@babel/preset-env": "^7.26.7",
