@@ -22,7 +22,6 @@ import postCss          from 'gulp-postcss'
 import cssnano          from 'cssnano'
 import autoprefixer     from 'autoprefixer'
 import imagemin         from 'imagemin'
-import imageminJpegtran from 'imagemin-jpegtran'
 import imageminMozjpeg  from 'imagemin-mozjpeg'
 import imageminPngquant from 'imagemin-pngquant'
 import imageminSvgo     from 'imagemin-svgo'
@@ -120,7 +119,6 @@ async function images() {
   try {
     const files = await imagemin([`app/images/src/**/*`], {
       plugins: [
-        imageminJpegtran({ progressive: true }),
         imageminMozjpeg({ quality: 90 }),
         imageminPngquant({ quality: [0.6, 0.8] }),
         imageminSvgo()
