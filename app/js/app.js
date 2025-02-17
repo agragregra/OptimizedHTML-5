@@ -4,5 +4,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 	// Custom JS
+	// document.body.hidden = true // test
 
 })

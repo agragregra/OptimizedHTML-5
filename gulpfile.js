@@ -4,28 +4,33 @@ let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work 
 import pkg from 'gulp'
 const { src, dest, parallel, series, watch } = pkg
 
-import browserSync   from 'browser-sync'
-import bssi          from 'browsersync-ssi'
-import ssi           from 'ssi'
-import webpackStream from 'webpack-stream'
-import webpack       from 'webpack'
-import TerserPlugin  from 'terser-webpack-plugin'
-import gulpSass      from 'gulp-sass'
-import * as dartSass from 'sass'
-const  sass          = gulpSass(dartSass)
-import sassglob      from 'gulp-sass-glob'
-import less          from 'gulp-less'
-import lessglob      from 'gulp-less-glob'
-import styl          from 'gulp-stylus'
-import stylglob      from 'gulp-noop'
-import postCss       from 'gulp-postcss'
-import cssnano       from 'cssnano'
-import autoprefixer  from 'autoprefixer'
-import imagemin      from 'gulp-imagemin'
-import changed       from 'gulp-changed'
-import concat        from 'gulp-concat'
-import rsync         from 'gulp-rsync'
-import {deleteAsync} from 'del'
+import browserSync      from 'browser-sync'
+import bssi             from 'browsersync-ssi'
+import ssi              from 'ssi'
+import webpackStream    from 'webpack-stream'
+import webpack          from 'webpack'
+import TerserPlugin     from 'terser-webpack-plugin'
+import gulpSass         from 'gulp-sass'
+import * as dartSass    from 'sass'
+const  sass             = gulpSass(dartSass)
+import sassglob         from 'gulp-sass-glob'
+import less             from 'gulp-less'
+import lessglob         from 'gulp-less-glob'
+import styl             from 'gulp-stylus'
+import stylglob         from 'gulp-noop'
+import postCss          from 'gulp-postcss'
+import cssnano          from 'cssnano'
+import autoprefixer     from 'autoprefixer'
+import imagemin         from 'imagemin'
+import imageminJpegtran from 'imagemin-jpegtran'
+import imageminMozjpeg  from 'imagemin-mozjpeg'
+import imageminPngquant from 'imagemin-pngquant'
+import imageminSvgo     from 'imagemin-svgo'
+import path             from 'path'
+import fs               from 'fs-extra'
+import concat           from 'gulp-concat'
+import rsync            from 'gulp-rsync'
+import {deleteAsync}    from 'del'
 
 function browsersync() {
   browserSync.init({
@@ -72,7 +77,20 @@ function scripts() {
           })
         ]
       },
-    }, webpack)).on('error', function handleError() { this.emit('end') })
+    }, webpack, (err, stats) => {
+      if (err) {
+        console.error('❌ Webpack Error:', err);
+        this.emit('end');
+      }
+      if (stats.hasErrors()) {
+        console.error('❌ Webpack Stats Errors:', stats.toString({ colors: true }));
+        this.emit('end');
+      }
+    }))
+    .on('error', function (err) {
+      console.error('❌ Error in Gulp task scripts:', err.message);
+      this.emit('end');
+    })
     .pipe(concat('app.min.js'))
     .pipe(dest('app/js'))
     .pipe(browserSync.stream())
@@ -85,7 +103,10 @@ function styles() {
       'include css': true,
       silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import'],
       loadPaths: ['./']
-    })).on('error', function handleError() { this.emit('end') })
+    })).on('error', function handleError(err) { 
+      console.error('❌ Preprocessor error:', err.message);
+      this.emit('end');
+    })
     .pipe(postCss([
       autoprefixer({ grid: 'autoplace' }),
       cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
@@ -95,12 +116,26 @@ function styles() {
     .pipe(browserSync.stream())
 }
 
-function images() {
-  return src(['app/images/src/**/*'], { encoding: false })
-    .pipe(changed('app/images/dist'))
-    .pipe(imagemin())
-    .pipe(dest('app/images/dist'))
-    .pipe(browserSync.stream())
+async function images() {
+  try {
+    const files = await imagemin([`app/images/src/**/*`], {
+      plugins: [
+        imageminJpegtran({ progressive: true }),
+        imageminMozjpeg({ quality: 90 }),
+        imageminPngquant({ quality: [0.6, 0.8] }),
+        imageminSvgo()
+      ]
+    })
+    for (const v of files) {
+      const relativePath = path.relative('app/images/src', v.sourcePath)
+      const destPath = path.join('app/images/dist', relativePath)
+      fs.ensureDirSync(path.dirname(destPath))
+      fs.writeFileSync(destPath, v.data)
+    }
+    console.log('✅ Images optimized successfully.')
+  } catch (err) {
+    console.error('❌ Image Minification Error:', err.message || err)
+  }
 }
 
 function buildcopy() {
