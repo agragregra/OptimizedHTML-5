@@ -102,7 +102,7 @@ function styles() {
       'include css': true,
       silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import'],
       loadPaths: ['./']
-    })).on('error', function handleError(err) { 
+    })).on('error', function handleError(err) {
       console.error('❌ Preprocessor error:', err.message);
       this.emit('end');
     })
