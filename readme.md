@@ -2,7 +2,7 @@
 <p>Lightweight production-ready Gulp starter.</p>
 
 <p>
-  <img src="https://raw.githubusercontent.com/webdesign-masteru/OptimizedHTML-5/master/dist/img/preview.jpgd" alt="Start HTML Template">
+  <img src="https://raw.githubusercontent.com/webdesign-masteru/OptimizedHTML-5/master/dist/img/preview.jpg" alt="Start HTML Template">
 </p>
 
 <p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp</strong>, <strong>Preprocessors (Sass, Scss, Less, Stylus)</strong>, <strong>cssnano</strong>, <strong>Browsersync</strong>, <strong>PostCSS</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot), Server-side <strong>HTML imports</strong> (SSI), <strong>build</strong>, <strong>gulp-imagemin</strong>. It uses best practices of images compression, JavaScript, CSS optimizing and contains a <strong>.htaccess</strong> code for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
