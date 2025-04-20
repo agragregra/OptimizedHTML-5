@@ -2,7 +2,7 @@
 <p>Lightweight production-ready Gulp starter.</p>
 
 <p>
-  <img src="https://raw.githubusercontent.com/webdesign-masteru/OptimizedHTML-5/master/app/images/src/preview.jpg" alt="Start HTML Template">
+  <img src="https://raw.githubusercontent.com/agragregra/OptimizedHTML-5/master/app/images/src/preview.jpg" alt="Start HTML Template">
 </p>
 
 <p><strong>OptimizedHTML 5</strong> - lightweight startup environment with <strong>Gulp</strong>, <strong>Preprocessors (Sass, Scss, Less, Stylus)</strong>, <strong>cssnano</strong>, <strong>Browsersync</strong>, <strong>PostCSS</strong>, <strong>Autoprefixer</strong>, <strong>webpack-stream</strong>, <strong>Babel</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot), Server-side <strong>HTML imports</strong> (SSI), <strong>build</strong>, <strong>gulp-imagemin</strong>. It uses best practices of images compression, JavaScript, CSS optimizing and contains a <strong>.htaccess</strong> code for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
@@ -11,10 +11,10 @@
 
 <p>Clone into the current folder with remove all unnecessary (one command):</p>
 
-<pre>git clone https://github.com/webdesign-masteru/OptimizedHTML-5 .; rm -rf trunk .gitignore readme.md .git .editorconfig</pre>
+<pre>git clone https://github.com/agragregra/OptimizedHTML-5 .; rm -rf trunk .gitignore readme.md .git .editorconfig</pre>
 
 <ol>
-  <li>Clone or <a href="https://github.com/webdesign-masteru/OptimizedHTML-5/archive/master.zip">Download</a> <strong>OptimizedHTML 5</strong> from GitHub</li>
+  <li>Clone or <a href="https://github.com/agragregra/OptimizedHTML-5/archive/master.zip">Download</a> <strong>OptimizedHTML 5</strong> from GitHub</li>
   <li>Install Node Modules: <strong>npm i</strong></li>
   <li>Run: <strong>npm run dev</strong></li>
   <li>Build: <strong>npm run build</strong></li>
