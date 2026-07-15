@@ -11,10 +11,10 @@
 
 <p>Clone into the current folder with remove all unnecessary (one command):</p>
 
-<pre>git clone https://github.com/agragregra/OptimizedHTML-5 .; rm -rf trunk .gitignore readme.md .git .editorconfig</pre>
+<pre>git clone https://github.com/wdmcourses/OptimizedHTML-5 .; rm -rf trunk .gitignore readme.md .git .editorconfig</pre>
 
 <ol>
-  <li>Clone or <a href="https://github.com/agragregra/OptimizedHTML-5/archive/master.zip">Download</a> <strong>OptimizedHTML 5</strong> from GitHub</li>
+  <li>Clone or <a href="https://github.com/wdmcourses/OptimizedHTML-5/archive/master.zip">Download</a> <strong>OptimizedHTML 5</strong> from GitHub</li>
   <li>Install Node Modules: <strong>npm i</strong></li>
   <li>Run: <strong>npm run dev</strong></li>
   <li>Build: <strong>npm run build</strong></li>
